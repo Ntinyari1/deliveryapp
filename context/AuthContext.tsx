@@ -1,0 +1,65 @@
+import React, { createContext, useContext, useState, useEffect } from 'react';
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  role: 'sender' | 'rider' | 'admin';
+  profileImage?: string;
+  isApproved?: boolean;
+}
+
+interface AuthContextType {
+  user: User | null;
+  login: (userData: User) => void;
+  logout: () => void;
+  isLoading: boolean;
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate checking for stored auth token
+    // For demo purposes, let's set a default user
+    const demoUser: User = {
+      id: 'demo-user',
+      name: 'John Doe',
+      email: 'john@example.com',
+      phone: '+254712345678',
+      role: 'sender',
+      isApproved: true,
+    };
+    
+    setTimeout(() => {
+      setUser(demoUser);
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
+  const login = (userData: User) => {
+    setUser(userData);
+  };
+
+  const logout = () => {
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout, isLoading }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
