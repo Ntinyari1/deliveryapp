@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Alert, Modal } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { User, Wallet, Settings, CircleHelp as HelpCircle, Shield, LogOut, Edit, Star, Package, Clock, TrendingUp, ChevronRight, Menu, X } from 'lucide-react-native';
+import { User, Wallet, Settings, CircleHelp as HelpCircle, Shield, LogOut, CreditCard as Edit, Star, Package, Clock, TrendingUp, ChevronRight, Menu, X } from 'lucide-react-native';
 import { useAuth } from '@/context/AuthContext';
 
 export default function SenderProfile() {
