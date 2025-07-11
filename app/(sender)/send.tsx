@@ -37,7 +37,7 @@ export default function SendPackage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#FF8C00', '#FF6B6B']}
+        colors={['#8B7D6B', '#A0826D']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#FF8C00',
+    color: '#B8860B',
     marginBottom: 20,
   },
   locationCard: {

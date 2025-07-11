@@ -42,7 +42,7 @@ export default function RiderMatching() {
   const handleDeclineRider = () => {
     setIsSearching(true);
     setMatchedRider(null);
-    
+
     // Simulate finding another rider
     setTimeout(() => {
       setIsSearching(false);
@@ -143,7 +143,7 @@ export default function RiderMatching() {
           <Text style={styles.tripTitle}>Trip Details</Text>
           <View style={styles.tripRoute}>
             <View style={styles.routePoint}>
-              <View style={styles.routeIcon} />
+              <View style={[styles.routeIcon]} />
               <Text style={styles.routeText}>Westlands Shopping Mall</Text>
             </View>
             <View style={styles.routeLine} />
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#FF8C00',
+    backgroundColor: '#B8860B',
   },
   searchingText: {
     fontSize: 18,
@@ -363,7 +363,7 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: '#FF8C00',
+    backgroundColor: '#B8860B',
     marginRight: 16,
   },
   routeIconDestination: {

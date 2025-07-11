@@ -33,7 +33,7 @@ export default function SplashScreen() {
 
   return (
     <LinearGradient
-      colors={['#FF8C00', '#FF6347']}
+      colors={['#D2691E', '#CD853F']}
       style={styles.container}
     >
       <View style={styles.content}>

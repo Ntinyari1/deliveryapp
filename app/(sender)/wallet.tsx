@@ -56,7 +56,7 @@ export default function WalletPage() {
               <Plus color="#FF8C00" size={24} />
             </TouchableOpacity>
           </View>
-          
+
           {paymentMethods.map((method) => (
             <TouchableOpacity key={method.id} style={styles.paymentCard}>
               <CreditCard color="#666666" size={24} />
@@ -81,7 +81,7 @@ export default function WalletPage() {
               <History color="#FF8C00" size={24} />
             </TouchableOpacity>
           </View>
-          
+
           {transactions.map((transaction) => (
             <View key={transaction.id} style={styles.transactionCard}>
               <View style={styles.transactionIcon}>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   balanceAmount: {
     fontSize: 36,
     fontFamily: 'Inter-Bold',
-    color: '#FF8C00',
+    color: '#B8860B',
     marginBottom: 20,
   },
   topUpButton: {
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   topUpText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#FF8C00',
+    color: '#B8860B',
     marginLeft: 8,
   },
   section: {

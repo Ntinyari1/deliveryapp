@@ -14,7 +14,7 @@ export default function RoleSelection() {
 
   return (
     <LinearGradient
-      colors={['#667eea', '#764ba2']}
+      colors={['#8B7D6B', '#A0826D']}
       style={styles.container}
     >
       <View style={styles.header}>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+    backgroundColor: 'rgba(210, 105, 30, 0.15)',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 16,
