@@ -144,7 +144,7 @@ export default function DeliveryHistory() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#2E8B57', '#3CB371']}
+        colors={['#FF8C00', '#FF6B6B']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
   filterChipText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#2E8B57',
+    color: '#FF8C00',
   },
   filterChipTextActive: {
     color: '#ffffff',
@@ -335,7 +335,7 @@ const styles = StyleSheet.create({
   locationText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#2E8B57',
+    color: '#FF8C00',
     flex: 1,
   },
   routeArrow: {
@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
   riderName: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-   color: '#2E8B57',
+    color: '#FF8C00',
   },
   deliveryFooter: {
     flexDirection: 'row',
@@ -396,6 +396,6 @@ const styles = StyleSheet.create({
   ratingText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-   color: '#2E8B57',
+    color: '#FF8C00',
   },
 });

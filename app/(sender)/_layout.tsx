@@ -30,7 +30,7 @@ export default function SenderLayout() {
           fontFamily: 'Inter-SemiBold',
           marginTop: 5,
         },
-        tabBarActiveTintColor: '#2E8B57',
+        tabBarActiveTintColor: '#FF8C00',
         tabBarInactiveTintColor: '#999999',
         tabBarIconStyle: {
           marginBottom: 2,

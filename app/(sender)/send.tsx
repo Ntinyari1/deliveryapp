@@ -37,7 +37,7 @@ export default function SendPackage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#2E8B57', '#3CB371']}
+        colors={['#FF8C00', '#FF6B6B']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -57,7 +57,7 @@ export default function SendPackage() {
         {/* Location Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>📍 Pickup & Drop-off</Text>
-          
+
           <View style={styles.locationCard}>
             <View style={styles.inputContainer}>
               <View style={styles.inputHeader}>
@@ -96,7 +96,7 @@ export default function SendPackage() {
         {/* Package Details */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>📦 Package Details</Text>
-          
+
           <View style={styles.card}>
             <Text style={styles.cardSubtitle}>What are you sending?</Text>
             <View style={styles.optionsGrid}>
@@ -149,7 +149,7 @@ export default function SendPackage() {
         {/* Pickup Time */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>⏰ Pickup Time</Text>
-          
+
           <View style={styles.card}>
             <View style={styles.timeOptions}>
               <TouchableOpacity
@@ -168,7 +168,7 @@ export default function SendPackage() {
                   Immediate Pickup
                 </Text>
               </TouchableOpacity>
-              
+
               <TouchableOpacity
                 style={[
                   styles.timeOption,
@@ -192,7 +192,7 @@ export default function SendPackage() {
         {/* Special Instructions */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>📝 Special Instructions</Text>
-          
+
           <View style={styles.card}>
             <TextInput
               style={styles.textArea}
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#2E8B57',
+    color: '#FF8C00',
     marginBottom: 20,
   },
   locationCard: {

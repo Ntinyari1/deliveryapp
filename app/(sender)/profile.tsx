@@ -79,7 +79,7 @@ export default function SenderProfile() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <LinearGradient
-        colors={['#2E8B57', '#3CB371']}
+        colors={['#FF8C00', '#FF6B6B']}
         style={styles.header}
       >
         <View style={styles.headerTop}>
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 22,
     fontFamily: 'Inter-Bold',
-    color: '#2E8B57',
+    color: '#FF8C00',
   },
   sectionHeader: {
     marginBottom: 25,
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 28,
     fontFamily: 'Inter-Bold',
-    color: '#2E8B57',
+    color: '#FF8C00',
     marginBottom: 8,
   },
   statLabel: {
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#2E8B57',
+    color: '#FF8C00',
   },
   modalMenuItem: {
     flexDirection: 'row',
@@ -395,7 +395,7 @@ const styles = StyleSheet.create({
   modalMenuTitle: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#2E8B57',
+    color: '#FF8C00',
     marginBottom: 4,
   },
   modalMenuSubtitle: {
