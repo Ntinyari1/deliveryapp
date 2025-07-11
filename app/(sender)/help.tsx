@@ -58,7 +58,7 @@ export default function HelpPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#8B7D6B', '#A0826D']}
+        colors={['#800000', '#B22222']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -77,7 +77,7 @@ export default function HelpPage() {
           {contactOptions.map((option, index) => (
             <TouchableOpacity key={index} style={styles.contactCard} onPress={option.action}>
               <View style={styles.contactIcon}>
-                <option.icon color="#FF8C00" size={24} />
+                <option.icon color="#FFD700" size={24} />
               </View>
               <View style={styles.contactInfo}>
                 <Text style={styles.contactTitle}>{option.title}</Text>
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: 'rgba(139, 125, 107, 0.1)',
+    backgroundColor: 'rgba(128, 0, 0, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 15,

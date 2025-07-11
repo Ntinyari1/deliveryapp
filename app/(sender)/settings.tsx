@@ -63,7 +63,7 @@ export default function SettingsPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#8B7D6B', '#A0826D']}
+        colors={['#800000', '#B22222']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -79,10 +79,10 @@ export default function SettingsPage() {
         {settingsGroups.map((group, groupIndex) => (
           <View key={groupIndex} style={styles.settingsGroup}>
             <View style={styles.groupHeader}>
-              <group.icon color="#FF8C00" size={24} />
+              <group.icon color="#FFD700" size={24} />
               <Text style={styles.groupTitle}>{group.title}</Text>
             </View>
-            
+
             {group.items.map((item) => (
               <View key={item.key} style={styles.settingItem}>
                 <View style={styles.settingInfo}>
@@ -92,7 +92,7 @@ export default function SettingsPage() {
                 <Switch
                   value={settings[item.key as keyof typeof settings] as boolean}
                   onValueChange={() => toggleSetting(item.key)}
-                  trackColor={{ false: '#E0E0E0', true: '#FF8C00' }}
+                  trackColor={{ false: '#E0E0E0', true: '#FFD700' }}
                   thumbColor={settings[item.key as keyof typeof settings] ? '#ffffff' : '#f4f3f4'}
                 />
               </View>
@@ -102,10 +102,10 @@ export default function SettingsPage() {
 
         <View style={styles.settingsGroup}>
           <View style={styles.groupHeader}>
-            <Smartphone color="#FF8C00" size={24} />
+            <Smartphone color="#FFD700" size={24} />
             <Text style={styles.groupTitle}>App Information</Text>
           </View>
-          
+
           {actionItems.map((item, index) => (
             <TouchableOpacity key={index} style={styles.actionItem}>
               <item.icon color="#666666" size={24} />
@@ -132,7 +132,7 @@ export default function SettingsPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#f0f8ff',
   },
   header: {
     paddingTop: 70,

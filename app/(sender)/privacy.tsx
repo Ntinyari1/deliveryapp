@@ -93,7 +93,7 @@ export default function PrivacyPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#8B7D6B', '#A0826D']}
+        colors={['#800000', '#B22222']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
         {privacyGroups.map((group, groupIndex) => (
           <View key={groupIndex} style={styles.privacyGroup}>
             <View style={styles.groupHeader}>
-              <group.icon color="#FF8C00" size={24} />
+              <group.icon color="#FFD700" size={24} />
               <Text style={styles.groupTitle}>{group.title}</Text>
             </View>
             
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
                 <Switch
                   value={privacySettings[item.key as keyof typeof privacySettings] as boolean}
                   onValueChange={() => toggleSetting(item.key)}
-                  trackColor={{ false: '#E0E0E0', true: '#FF8C00' }}
+                  trackColor={{ false: '#E0E0E0', true: '#FFD700' }}
                   thumbColor={privacySettings[item.key as keyof typeof privacySettings] ? '#ffffff' : '#f4f3f4'}
                 />
               </View>
@@ -134,7 +134,7 @@ export default function PrivacyPage() {
         {/* Data Management */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Shield color="#FF8C00" size={24} />
+            <Shield color="#FFD700" size={24} />
             <Text style={styles.sectionTitle}>Data Management</Text>
           </View>
           
@@ -175,7 +175,7 @@ export default function PrivacyPage() {
 
         {/* Privacy Notice */}
         <View style={styles.privacyNotice}>
-          <Eye color="#FF8C00" size={28} />
+          <Eye color="#FFD700" size={28} />
           <Text style={styles.noticeTitle}>Your Privacy Matters</Text>
           <Text style={styles.noticeText}>
             We are committed to protecting your privacy and ensuring your data is secure. 
@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   policyButton: {
-    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+    backgroundColor: 'rgba(255, 215, 0, 0.1)',
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderRadius: 25,
@@ -367,6 +367,6 @@ const styles = StyleSheet.create({
   policyButtonText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#FF8C00',
+    color: '#FFD700',
   },
 });

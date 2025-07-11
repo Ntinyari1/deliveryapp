@@ -22,7 +22,7 @@ export default function WalletPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#FF8C00', '#FF6347']}
+        colors={['#800000', '#B22222']}
         style={styles.header}
       >
         <View style={styles.headerContent}>

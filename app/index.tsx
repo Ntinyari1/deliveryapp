@@ -33,7 +33,7 @@ export default function SplashScreen() {
 
   return (
     <LinearGradient
-      colors={['#D2691E', '#CD853F']}
+      colors={['#800000', '#B22222']}
       style={styles.container}
     >
       <View style={styles.content}>
@@ -42,10 +42,10 @@ export default function SplashScreen() {
             <Text style={styles.logoText}>TR</Text>
           </View>
         </View>
-        
+
         <Text style={styles.title}>TumaRide</Text>
         <Text style={styles.subtitle}>Swift Delivery, Trusted Journey</Text>
-        
+
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color="#ffffff" />
         </View>

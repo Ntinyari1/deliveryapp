@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#B8860B',
+    color: '#800000',
     marginBottom: 20,
   },
   locationCard: {

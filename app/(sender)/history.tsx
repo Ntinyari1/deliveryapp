@@ -104,7 +104,7 @@ export default function DeliveryHistory() {
             <Text style={styles.locationText} numberOfLines={1}>{item.to}</Text>
           </View>
         </View>
-        
+
         <View style={[styles.statusBadge, { backgroundColor: getStatusColor(item.status) + '15' }]}>
           <Text style={[styles.statusText, { color: getStatusColor(item.status) }]}>
             {getStatusText(item.status)}
@@ -144,7 +144,7 @@ export default function DeliveryHistory() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#FF8C00', '#FF6B6B']}
+        colors={['#800000', '#B22222']}
         style={styles.header}
       >
         <View style={styles.headerContent}>

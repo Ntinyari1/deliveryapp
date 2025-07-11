@@ -47,7 +47,7 @@ export default function SenderHome() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#8B7D6B', '#A0826D']}
+        colors={['#800000', '#B22222']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -85,7 +85,7 @@ export default function SenderHome() {
           activeOpacity={0.9}
         >
           <LinearGradient
-            colors={['#FF8C00', '#FF7F00']}
+            colors={['#FFD700', '#DAA520']}
             style={styles.sendButtonGradient}
           >
             <Plus color="#ffffff" size={24} />
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#8B7D6B',
+    color: '#800000',
     marginBottom: 20,
   },
   sectionHeader: {
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   viewAllText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#8B7D6B',
+    color: '#800000',
   },
   statsGrid: {
     flexDirection: 'row',
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 28,
     fontFamily: 'Inter-Bold',
-    color: '#8B7D6B',
+    color: '#800000',
     marginBottom: 8,
   },
   statLabel: {
@@ -287,12 +287,12 @@ const styles = StyleSheet.create({
   routeText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#8B7D6B',
+    color: '#800000',
   },
   amountText: {
     fontSize: 16,
     fontFamily: 'Inter-Bold',
-    color: '#8B7D6B',
+    color: '#800000',
   },
   deliveryFooter: {
     flexDirection: 'row',
