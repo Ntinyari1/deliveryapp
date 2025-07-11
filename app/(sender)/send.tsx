@@ -160,7 +160,7 @@ export default function SendPackage() {
                 onPress={() => handleInputChange('pickupTime', 'immediate')}
                 activeOpacity={0.8}
               >
-                <Clock color={formData.pickupTime === 'immediate' ? '#ffffff' : '#FF8C00'} size={20} />
+                <Clock color={formData.pickupTime === 'immediate' ? '#ffffff' : '#FFD700'} size={20} />
                 <Text style={[
                   styles.timeOptionText,
                   formData.pickupTime === 'immediate' && styles.timeOptionTextSelected
@@ -177,7 +177,7 @@ export default function SendPackage() {
                 onPress={() => handleInputChange('pickupTime', 'scheduled')}
                 activeOpacity={0.8}
               >
-                <Clock color={formData.pickupTime === 'scheduled' ? '#ffffff' : '#FF8C00'} size={20} />
+                <Clock color={formData.pickupTime === 'scheduled' ? '#ffffff' : '#FFD700'} size={20} />
                 <Text style={[
                   styles.timeOptionText,
                   formData.pickupTime === 'scheduled' && styles.timeOptionTextSelected
@@ -223,7 +223,7 @@ export default function SendPackage() {
           activeOpacity={0.9}
         >
           <LinearGradient
-            colors={['#FF8C00', '#FF7F00']}
+            colors={['#FFD700', '#DAA520']}
             style={styles.submitGradient}
           >
             <Text style={styles.submitText}>Find a Rider</Text>
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#2E8B57',
+    color: '#800000',
     marginLeft: 10,
   },
   textInput: {
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     fontSize: 16,
     fontFamily: 'Inter-Regular',
-    color: '#2E8B57',
+    color: '#800000',
     borderWidth: 1,
     borderColor: '#e9ecef',
   },
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
   cardSubtitle: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#2E8B57',
+    color: '#800000',
     marginBottom: 15,
   },
   optionsGrid: {
@@ -355,13 +355,13 @@ const styles = StyleSheet.create({
     borderColor: '#e9ecef',
   },
   optionChipSelected: {
-    backgroundColor: '#FF8C00',
-    borderColor: '#FF8C00',
+    backgroundColor: '#FFD700',
+    borderColor: '#FFD700',
   },
   optionText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#2E8B57',
+    color: '#800000',
   },
   optionTextSelected: {
     color: '#ffffff',
@@ -379,13 +379,13 @@ const styles = StyleSheet.create({
     borderColor: '#e9ecef',
   },
   timeOptionSelected: {
-    backgroundColor: '#FF8C00',
-    borderColor: '#FF8C00',
+    backgroundColor: '#FFD700',
+    borderColor: '#FFD700',
   },
   timeOptionText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#2E8B57',
+    color: '#800000',
     marginLeft: 12,
   },
   timeOptionTextSelected: {
@@ -398,7 +398,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     fontSize: 16,
     fontFamily: 'Inter-Regular',
-    color: '#2E8B57',
+    color: '#800000',
     borderWidth: 1,
     borderColor: '#e9ecef',
     minHeight: 100,
@@ -414,7 +414,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 6,
     borderWidth: 2,
-    borderColor: '#FF8C00',
+    borderColor: '#FFD700',
   },
   priceHeader: {
     flexDirection: 'row',
@@ -425,12 +425,12 @@ const styles = StyleSheet.create({
   priceLabel: {
     fontSize: 18,
     fontFamily: 'Inter-SemiBold',
-    color: '#2E8B57',
+    color: '#800000',
   },
   priceAmount: {
     fontSize: 24,
     fontFamily: 'Inter-Bold',
-    color: '#FF8C00',
+    color: '#FFD700',
   },
   priceNote: {
     fontSize: 14,
