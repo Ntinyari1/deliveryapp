@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Home, Package, Clock, User } from 'lucide-react-native';
+import { Chrome as Home, Package, Clock, User } from 'lucide-react-native';
 
 export default function SenderLayout() {
   return (
