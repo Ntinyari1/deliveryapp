@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, Package, Clock, User } from 'lucide-react-native';
+import { Home, Package, Clock, User } from 'lucide-react-native';
 
 export default function SenderLayout() {
   return (
@@ -10,8 +10,8 @@ export default function SenderLayout() {
           backgroundColor: '#1a1a1a',
           borderTopWidth: 1,
           borderTopColor: '#333333',
-          height: 85,
-          paddingBottom: 25,
+          height: 90,
+          paddingBottom: 30,
           paddingTop: 12,
           position: 'absolute',
           bottom: 0,
@@ -26,12 +26,12 @@ export default function SenderLayout() {
         tabBarLabelStyle: {
           fontSize: 11,
           fontFamily: 'Inter-Medium',
-          marginTop: 4,
+          marginTop: 6,
         },
         tabBarActiveTintColor: '#FF8C00',
         tabBarInactiveTintColor: '#888888',
         tabBarIconStyle: {
-          marginBottom: 2,
+          marginBottom: 4,
         },
       }}
     >
@@ -40,7 +40,7 @@ export default function SenderLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, size }) => (
-            <Home color={color} size={22} />
+            <Home color={color} size={24} />
           ),
         }}
       />
@@ -49,7 +49,7 @@ export default function SenderLayout() {
         options={{
           title: 'Send',
           tabBarIcon: ({ color, size }) => (
-            <Package color={color} size={22} />
+            <Package color={color} size={24} />
           ),
         }}
       />
@@ -58,7 +58,7 @@ export default function SenderLayout() {
         options={{
           title: 'History',
           tabBarIcon: ({ color, size }) => (
-            <Clock color={color} size={22} />
+            <Clock color={color} size={24} />
           ),
         }}
       />
@@ -67,7 +67,7 @@ export default function SenderLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color, size }) => (
-            <User color={color} size={22} />
+            <User color={color} size={24} />
           ),
         }}
       />

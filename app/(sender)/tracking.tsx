@@ -47,21 +47,21 @@ export default function DeliveryTracking() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#667eea', '#764ba2']}
+        colors={['#1a1a1a', '#2d2d2d']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
             <ArrowLeft color="#ffffff" size={24} />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Track Delivery</Text>
+          <Text style={styles.headerTitle}>📍 Track Delivery</Text>
           <Text style={styles.headerSubtitle}>Live tracking of your package</Text>
         </View>
       </LinearGradient>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.mapPlaceholder}>
-          <MapPin color="#667eea" size={28} />
+          <MapPin color="#FF8C00" size={28} />
           <Text style={styles.mapText}>Live Map View</Text>
           <Text style={styles.mapSubtext}>Rider location and route</Text>
         </View>
@@ -69,7 +69,7 @@ export default function DeliveryTracking() {
         <View style={styles.statusCard}>
           <View style={styles.statusHeader}>
             <View style={styles.statusIcon}>
-              <Navigation color="#667eea" size={18} />
+              <Navigation color="#FF8C00" size={18} />
             </View>
             <View style={styles.statusInfo}>
               <Text style={styles.statusTitle}>
@@ -122,10 +122,10 @@ export default function DeliveryTracking() {
             </View>
             <View style={styles.riderActions}>
               <TouchableOpacity style={styles.actionButton}>
-                <Phone color="#667eea" size={16} />
+                <Phone color="#FF8C00" size={16} />
               </TouchableOpacity>
               <TouchableOpacity style={styles.actionButton}>
-                <MessageCircle color="#667eea" size={16} />
+                <MessageCircle color="#FF8C00" size={16} />
               </TouchableOpacity>
             </View>
           </View>
@@ -154,7 +154,7 @@ export default function DeliveryTracking() {
         {deliveryStatus === 'delivered' && (
           <TouchableOpacity style={styles.completeButton} onPress={handleCompleteDelivery}>
             <LinearGradient
-              colors={['#22c55e', '#16a34a']}
+              colors={['#32CD32', '#228B22']}
               style={styles.completeButtonGradient}
             >
               <Text style={styles.completeButtonText}>Delivery Complete</Text>
@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+    backgroundColor: 'rgba(255, 140, 0, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 16,
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   progressDotActive: {
-    backgroundColor: '#667eea',
+    backgroundColor: '#FF8C00',
   },
   progressDotInactive: {
     backgroundColor: '#E0E0E0',
@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
     height: 16,
   },
   progressLineActive: {
-    backgroundColor: '#667eea',
+    backgroundColor: '#FF8C00',
   },
   progressLineInactive: {
     backgroundColor: '#E0E0E0',
@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+    backgroundColor: 'rgba(255, 140, 0, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
   },
