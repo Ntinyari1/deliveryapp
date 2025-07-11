@@ -90,7 +90,7 @@ export default function RiderMatching() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#2E8B57', '#3CB371']}
+        colors={['#FF8C00', '#FF6347']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
