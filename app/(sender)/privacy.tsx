@@ -93,7 +93,7 @@ export default function PrivacyPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#1a1a1a', '#2d2d2d']}
+        colors={['#8B7D6B', '#A0826D']}
         style={styles.header}
       >
         <View style={styles.headerContent}>

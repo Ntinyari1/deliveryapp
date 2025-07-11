@@ -58,7 +58,7 @@ export default function HelpPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#1a1a1a', '#2d2d2d']}
+        colors={['#8B7D6B', '#A0826D']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+    backgroundColor: 'rgba(139, 125, 107, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 15,

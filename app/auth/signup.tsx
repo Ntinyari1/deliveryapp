@@ -58,7 +58,7 @@ export default function SignUp() {
 
   return (
     <LinearGradient
-      colors={['#667eea', '#764ba2']}
+      colors={['#8B7D6B', '#A0826D']}
       style={styles.container}
     >
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   signUpButton: {
-    backgroundColor: '#667eea',
+    backgroundColor: '#8B7D6B',
     paddingVertical: 16,
     borderRadius: 8,
     alignItems: 'center',
@@ -259,6 +259,6 @@ const styles = StyleSheet.create({
   loginButtonText: {
     fontSize: 14,
     fontFamily: 'Inter-Medium',
-    color: '#667eea',
+    color: '#8B7D6B',
   },
 });

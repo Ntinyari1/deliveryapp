@@ -47,7 +47,7 @@ export default function DeliveryTracking() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#2E8B57', '#3CB371']}
+        colors={['#8B7D6B', '#A0826D']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
