@@ -7,31 +7,33 @@ export default function SenderLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#1a1a1a',
+          backgroundColor: '#ffffff',
           borderTopWidth: 1,
-          borderTopColor: '#333333',
-          height: 90,
-          paddingBottom: 30,
-          paddingTop: 12,
+          borderTopColor: '#e0e0e0',
+          height: 85,
+          paddingBottom: 25,
+          paddingTop: 10,
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
-          elevation: 8,
+          elevation: 10,
           shadowColor: '#000',
-          shadowOffset: { width: 0, height: -2 },
-          shadowOpacity: 0.1,
-          shadowRadius: 8,
+          shadowOffset: { width: 0, height: -3 },
+          shadowOpacity: 0.15,
+          shadowRadius: 10,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
         },
         tabBarLabelStyle: {
-          fontSize: 11,
-          fontFamily: 'Inter-Medium',
-          marginTop: 6,
+          fontSize: 12,
+          fontFamily: 'Inter-SemiBold',
+          marginTop: 5,
         },
-        tabBarActiveTintColor: '#FF8C00',
-        tabBarInactiveTintColor: '#888888',
+        tabBarActiveTintColor: '#2E8B57',
+        tabBarInactiveTintColor: '#999999',
         tabBarIconStyle: {
-          marginBottom: 4,
+          marginBottom: 2,
         },
       }}
     >
@@ -39,8 +41,12 @@ export default function SenderLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <Home color={color} size={24} />
+          tabBarIcon: ({ color, focused }) => (
+            <Home 
+              color={color} 
+              size={focused ? 28 : 24} 
+              strokeWidth={focused ? 2.5 : 2}
+            />
           ),
         }}
       />
@@ -48,8 +54,12 @@ export default function SenderLayout() {
         name="send"
         options={{
           title: 'Send',
-          tabBarIcon: ({ color, size }) => (
-            <Package color={color} size={24} />
+          tabBarIcon: ({ color, focused }) => (
+            <Package 
+              color={color} 
+              size={focused ? 28 : 24} 
+              strokeWidth={focused ? 2.5 : 2}
+            />
           ),
         }}
       />
@@ -57,8 +67,12 @@ export default function SenderLayout() {
         name="history"
         options={{
           title: 'History',
-          tabBarIcon: ({ color, size }) => (
-            <Clock color={color} size={24} />
+          tabBarIcon: ({ color, focused }) => (
+            <Clock 
+              color={color} 
+              size={focused ? 28 : 24} 
+              strokeWidth={focused ? 2.5 : 2}
+            />
           ),
         }}
       />
@@ -66,11 +80,21 @@ export default function SenderLayout() {
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, size }) => (
-            <User color={color} size={24} />
+          tabBarIcon: ({ color, focused }) => (
+            <User 
+              color={color} 
+              size={focused ? 28 : 24} 
+              strokeWidth={focused ? 2.5 : 2}
+            />
           ),
         }}
       />
+      <Tabs.Screen name="wallet" options={{ href: null }} />
+      <Tabs.Screen name="settings" options={{ href: null }} />
+      <Tabs.Screen name="help" options={{ href: null }} />
+      <Tabs.Screen name="privacy" options={{ href: null }} />
+      <Tabs.Screen name="matching" options={{ href: null }} />
+      <Tabs.Screen name="tracking" options={{ href: null }} />
     </Tabs>
   );
 }

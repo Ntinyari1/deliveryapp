@@ -47,7 +47,7 @@ export default function SenderHome() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#1a1a1a', '#2d2d2d']}
+        colors={['#2E8B57', '#3CB371']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     marginBottom: 20,
   },
   sectionHeader: {
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 28,
     fontFamily: 'Inter-Bold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     marginBottom: 8,
   },
   statLabel: {
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
   routeText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
   },
   amountText: {
     fontSize: 16,

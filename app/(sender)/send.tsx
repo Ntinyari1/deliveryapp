@@ -37,7 +37,7 @@ export default function SendPackage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#1a1a1a', '#2d2d2d']}
+        colors={['#2E8B57', '#3CB371']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     marginBottom: 20,
   },
   locationCard: {
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     marginLeft: 10,
   },
   textInput: {
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     fontSize: 16,
     fontFamily: 'Inter-Regular',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     borderWidth: 1,
     borderColor: '#e9ecef',
   },
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
   cardSubtitle: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     marginBottom: 15,
   },
   optionsGrid: {
@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
   },
   optionTextSelected: {
     color: '#ffffff',
@@ -385,7 +385,7 @@ const styles = StyleSheet.create({
   timeOptionText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     marginLeft: 12,
   },
   timeOptionTextSelected: {
@@ -398,7 +398,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     fontSize: 16,
     fontFamily: 'Inter-Regular',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     borderWidth: 1,
     borderColor: '#e9ecef',
     minHeight: 100,
@@ -425,7 +425,7 @@ const styles = StyleSheet.create({
   priceLabel: {
     fontSize: 18,
     fontFamily: 'Inter-SemiBold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
   },
   priceAmount: {
     fontSize: 24,

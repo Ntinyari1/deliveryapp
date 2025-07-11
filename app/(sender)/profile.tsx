@@ -1,12 +1,14 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Alert } from 'react-native';
+import { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Alert, Modal } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { User, Wallet, Settings, CircleHelp as HelpCircle, Shield, LogOut, CreditCard as Edit, Star, Package, Clock, TrendingUp, ChevronRight } from 'lucide-react-native';
+import { User, Wallet, Settings, CircleHelp as HelpCircle, Shield, LogOut, Edit, Star, Package, Clock, TrendingUp, ChevronRight, Menu, X } from 'lucide-react-native';
 import { useAuth } from '@/context/AuthContext';
 
 export default function SenderProfile() {
   const router = useRouter();
   const { user, logout } = useAuth();
+  const [menuVisible, setMenuVisible] = useState(false);
 
   const stats = [
     { label: 'Total Deliveries', value: '24', icon: Package, color: '#FF8C00' },
@@ -51,6 +53,7 @@ export default function SenderProfile() {
   ];
 
   const handleMenuPress = (item: any) => {
+    setMenuVisible(false);
     router.push(`/(sender)/${item.route}`);
   };
 
@@ -76,9 +79,19 @@ export default function SenderProfile() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <LinearGradient
-        colors={['#1a1a1a', '#2d2d2d']}
+        colors={['#2E8B57', '#3CB371']}
         style={styles.header}
       >
+        <View style={styles.headerTop}>
+          <Text style={styles.headerTitle}>Profile</Text>
+          <TouchableOpacity 
+            style={styles.menuButton} 
+            onPress={() => setMenuVisible(true)}
+          >
+            <Menu color="#ffffff" size={24} />
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.profileSection}>
           <View style={styles.profileImageContainer}>
             <Image
@@ -86,7 +99,7 @@ export default function SenderProfile() {
               style={styles.profileImage}
             />
             <TouchableOpacity style={styles.editButton} onPress={handleEditProfile}>
-              <Edit color="#1a1a1a" size={18} />
+              <Edit color="#2E8B57" size={18} />
             </TouchableOpacity>
           </View>
           <Text style={styles.userName}>{user?.name || 'John Doe'}</Text>
@@ -112,29 +125,6 @@ export default function SenderProfile() {
           </View>
         </View>
 
-        <View style={styles.menuSection}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>⚙️ Account Settings</Text>
-          </View>
-          {menuItems.map((item) => (
-            <TouchableOpacity 
-              key={item.id} 
-              style={styles.menuItem}
-              onPress={() => handleMenuPress(item)}
-              activeOpacity={0.7}
-            >
-              <View style={[styles.menuIcon, { backgroundColor: item.color + '15' }]}>
-                <item.icon color={item.color} size={24} />
-              </View>
-              <View style={styles.menuContent}>
-                <Text style={styles.menuTitle}>{item.title}</Text>
-                <Text style={styles.menuSubtitle}>{item.subtitle}</Text>
-              </View>
-              <ChevronRight color="#999999" size={22} />
-            </TouchableOpacity>
-          ))}
-        </View>
-
         <TouchableOpacity 
           style={styles.logoutButton} 
           onPress={handleLogout}
@@ -149,6 +139,43 @@ export default function SenderProfile() {
 
         <Text style={styles.versionText}>TumaRide Version 1.0.0</Text>
       </View>
+
+      {/* Menu Modal */}
+      <Modal
+        visible={menuVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setMenuVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Settings Menu</Text>
+              <TouchableOpacity onPress={() => setMenuVisible(false)}>
+                <X color="#2E8B57" size={24} />
+              </TouchableOpacity>
+            </View>
+            
+            {menuItems.map((item) => (
+              <TouchableOpacity 
+                key={item.id} 
+                style={styles.modalMenuItem}
+                onPress={() => handleMenuPress(item)}
+                activeOpacity={0.7}
+              >
+                <View style={[styles.modalMenuIcon, { backgroundColor: item.color + '15' }]}>
+                  <item.icon color={item.color} size={24} />
+                </View>
+                <View style={styles.modalMenuContent}>
+                  <Text style={styles.modalMenuTitle}>{item.title}</Text>
+                  <Text style={styles.modalMenuSubtitle}>{item.subtitle}</Text>
+                </View>
+                <ChevronRight color="#999999" size={22} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 }
@@ -157,12 +184,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-    paddingBottom: 100, // Add space for tab bar
   },
   header: {
     paddingTop: 70,
     paddingBottom: 50,
     paddingHorizontal: 25,
+  },
+  headerTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontFamily: 'Inter-Bold',
+    color: '#ffffff',
+  },
+  menuButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 12,
+    padding: 12,
   },
   profileSection: {
     alignItems: 'center',
@@ -211,12 +253,12 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 25,
     paddingTop: 35,
-    paddingBottom: 40,
+    paddingBottom: 120,
   },
   sectionTitle: {
     fontSize: 22,
     fontFamily: 'Inter-Bold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
   },
   sectionHeader: {
     marginBottom: 25,
@@ -255,7 +297,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 28,
     fontFamily: 'Inter-Bold',
-    color: '#1a1a1a',
+    color: '#2E8B57',
     marginBottom: 8,
   },
   statLabel: {
@@ -264,47 +306,6 @@ const styles = StyleSheet.create({
     color: '#666666',
     textAlign: 'center',
     lineHeight: 20,
-  },
-  menuSection: {
-    marginBottom: 45,
-  },
-  menuItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
-    padding: 25,
-    marginBottom: 15,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    minHeight: 90,
-  },
-  menuIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 20,
-  },
-  menuContent: {
-    flex: 1,
-    paddingRight: 15,
-  },
-  menuTitle: {
-    fontSize: 18,
-    fontFamily: 'Inter-SemiBold',
-    color: '#1a1a1a',
-    marginBottom: 6,
-  },
-  menuSubtitle: {
-    fontSize: 15,
-    fontFamily: 'Inter-Regular',
-    color: '#666666',
-    lineHeight: 22,
   },
   logoutButton: {
     flexDirection: 'row',
@@ -343,5 +344,64 @@ const styles = StyleSheet.create({
     color: '#999999',
     textAlign: 'center',
     marginBottom: 50,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'flex-end',
+  },
+  modalContent: {
+    backgroundColor: '#ffffff',
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    paddingHorizontal: 25,
+    paddingTop: 25,
+    paddingBottom: 40,
+    maxHeight: '80%',
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 30,
+    paddingBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontFamily: 'Inter-Bold',
+    color: '#2E8B57',
+  },
+  modalMenuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f8f9fa',
+  },
+  modalMenuIcon: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  modalMenuContent: {
+    flex: 1,
+    paddingRight: 15,
+  },
+  modalMenuTitle: {
+    fontSize: 16,
+    fontFamily: 'Inter-SemiBold',
+    color: '#2E8B57',
+    marginBottom: 4,
+  },
+  modalMenuSubtitle: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#666666',
+    lineHeight: 20,
   },
 });
