@@ -8,8 +8,12 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "hostType": "tunnel",
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.boltexponativewind.app"
     },
     "web": {
       "bundler": "metro",
