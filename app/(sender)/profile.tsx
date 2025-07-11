@@ -22,7 +22,7 @@ export default function SenderProfile() {
       subtitle: 'Manage your payment methods', 
       icon: Wallet, 
       color: '#FF8C00',
-      route: '/(sender)/wallet'
+      route: 'wallet'
     },
     { 
       id: 'settings', 
@@ -30,7 +30,7 @@ export default function SenderProfile() {
       subtitle: 'Notifications & preferences', 
       icon: Settings, 
       color: '#32CD32',
-      route: '/(sender)/settings'
+      route: 'settings'
     },
     { 
       id: 'help', 
@@ -38,7 +38,7 @@ export default function SenderProfile() {
       subtitle: 'Get help and contact support', 
       icon: HelpCircle, 
       color: '#1E90FF',
-      route: '/(sender)/help'
+      route: 'help'
     },
     { 
       id: 'privacy', 
@@ -46,16 +46,12 @@ export default function SenderProfile() {
       subtitle: 'Manage your privacy settings', 
       icon: Shield, 
       color: '#9370DB',
-      route: '/(sender)/privacy'
+      route: 'privacy'
     },
   ];
 
   const handleMenuPress = (item: any) => {
-    Alert.alert(
-      item.title,
-      `Opening ${item.title} section...`,
-      [{ text: 'OK' }]
-    );
+    router.push(`/(sender)/${item.route}`);
   };
 
   const handleLogout = () => {
@@ -100,7 +96,9 @@ export default function SenderProfile() {
 
       <View style={styles.content}>
         <View style={styles.statsContainer}>
-          <Text style={styles.sectionTitle}>📊 Your Statistics</Text>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>📊 Your Statistics</Text>
+          </View>
           <View style={styles.statsGrid}>
             {stats.map((stat, index) => (
               <TouchableOpacity key={index} style={styles.statCard} activeOpacity={0.8}>
@@ -115,7 +113,9 @@ export default function SenderProfile() {
         </View>
 
         <View style={styles.menuSection}>
-          <Text style={styles.sectionTitle}>⚙️ Account Settings</Text>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>⚙️ Account Settings</Text>
+          </View>
           {menuItems.map((item) => (
             <TouchableOpacity 
               key={item.id} 
@@ -217,6 +217,8 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'Inter-Bold',
     color: '#1a1a1a',
+  },
+  sectionHeader: {
     marginBottom: 25,
   },
   statsContainer: {
