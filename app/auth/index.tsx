@@ -4,12 +4,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 const { width, height } = Dimensions.get('window');
 
-export default function AuthIndex() {
+export default function AuthLanding() {
   const router = useRouter();
-
-  const handleGetStarted = () => {
-    router.push('/auth/role-selection');
-  };
 
   return (
     <LinearGradient
@@ -17,7 +13,6 @@ export default function AuthIndex() {
       style={styles.container}
     >
       <View style={styles.content}>
-        {/* Header Section */}
         <View style={styles.header}>
           <View style={styles.logo}>
             <Text style={styles.logoText}>TR</Text>
@@ -26,17 +21,21 @@ export default function AuthIndex() {
           <Text style={styles.subtitle}>Swift Delivery, Trusted Journey</Text>
         </View>
 
-        {/* Main Content */}
-        <View style={styles.mainContent}>
-          <Text style={styles.welcomeText}>Welcome to TumaRide</Text>
-          <Text style={styles.descriptionText}>
-            Your reliable delivery and ride service platform
-          </Text>
+        <View style={styles.centerContent}>
+          <View style={styles.feature}>
+            <View style={styles.featureIcon}>
+              <Text style={styles.featureIconText}>🚚</Text>
+            </View>
+            <Text style={styles.featureTitle}>Fast & Reliable Delivery</Text>
+            <Text style={styles.featureDescription}>Connect with trusted riders for quick package delivery across the city</Text>
+          </View>
         </View>
 
-        {/* Get Started Button */}
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.getStartedButton} onPress={handleGetStarted}>
+          <TouchableOpacity
+            style={styles.getStartedButton}
+            onPress={() => router.push('/auth/login')}
+          >
             <Text style={styles.getStartedButtonText}>Get Started</Text>
           </TouchableOpacity>
         </View>
@@ -52,84 +51,96 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: 30,
-    paddingTop: 80,
-    paddingBottom: 50,
     justifyContent: 'space-between',
+    paddingTop: 80,
+    paddingBottom: 60,
   },
   header: {
     alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
   },
   logo: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: '#ffffff',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 3,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
-    marginBottom: 30,
+    marginBottom: 20,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
   },
   logoText: {
-    fontSize: 36,
+    fontSize: 28,
     fontFamily: 'Inter-Bold',
-    color: '#ffffff',
+    color: '#228B22',
   },
   title: {
-    fontSize: 42,
+    fontSize: 32,
     fontFamily: 'Inter-Bold',
     color: '#ffffff',
-    marginBottom: 10,
+    marginBottom: 8,
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: 'Inter-Regular',
     color: 'rgba(255, 255, 255, 0.9)',
     textAlign: 'center',
-    marginBottom: 40,
   },
-  mainContent: {
+  centerContent: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  feature: {
     alignItems: 'center',
-    paddingVertical: 20,
+    paddingHorizontal: 20,
   },
-  welcomeText: {
-    fontSize: 24,
-    fontFamily: 'Inter-SemiBold',
+  featureIcon: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  featureIconText: {
+    fontSize: 32,
+  },
+  featureTitle: {
+    fontSize: 22,
+    fontFamily: 'Inter-Bold',
     color: '#ffffff',
+    marginBottom: 12,
     textAlign: 'center',
-    marginBottom: 15,
   },
-  descriptionText: {
+  featureDescription: {
     fontSize: 16,
     fontFamily: 'Inter-Regular',
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: 'rgba(255, 255, 255, 0.9)',
     textAlign: 'center',
     lineHeight: 24,
-    paddingHorizontal: 20,
   },
   buttonContainer: {
     alignItems: 'center',
-    paddingTop: 20,
   },
   getStartedButton: {
     backgroundColor: '#ffffff',
-    borderRadius: 30,
+    borderRadius: 25,
     paddingVertical: 18,
-    paddingHorizontal: 60,
+    paddingHorizontal: 50,
     alignItems: 'center',
-    elevation: 8,
+    elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.3,
-    shadowRadius: 8,
-    width: width * 0.8,
-    maxWidth: 300,
+    shadowRadius: 5,
   },
   getStartedButtonText: {
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Inter-Bold',
     color: '#228B22',
   },

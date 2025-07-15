@@ -277,3 +277,286 @@ const styles = StyleSheet.create({
     color: '#999999',
   },
 });
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { useRouter } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
+import { ArrowLeft, MessageCircle, Phone, Mail, FileText, ChevronRight } from 'lucide-react-native';
+
+export default function Help() {
+  const router = useRouter();
+
+  const helpCategories = [
+    {
+      title: 'Getting Started',
+      icon: FileText,
+      items: [
+        'How to send a package',
+        'Understanding delivery fees',
+        'Tracking your delivery',
+        'Payment methods',
+      ]
+    },
+    {
+      title: 'Account & Security',
+      icon: FileText,
+      items: [
+        'Account verification',
+        'Password reset',
+        'Privacy settings',
+        'Data protection',
+      ]
+    },
+    {
+      title: 'Delivery Issues',
+      icon: FileText,
+      items: [
+        'Package not delivered',
+        'Damaged package',
+        'Wrong delivery address',
+        'Refund requests',
+      ]
+    },
+  ];
+
+  const contactOptions = [
+    {
+      title: 'Live Chat',
+      subtitle: 'Get instant help from our support team',
+      icon: MessageCircle,
+      action: () => {},
+    },
+    {
+      title: 'Call Support',
+      subtitle: '+254 700 123 456',
+      icon: Phone,
+      action: () => Linking.openURL('tel:+254700123456'),
+    },
+    {
+      title: 'Email Support',
+      subtitle: 'support@tumaride.com',
+      icon: Mail,
+      action: () => Linking.openURL('mailto:support@tumaride.com'),
+    },
+  ];
+
+  return (
+    <View style={styles.container}>
+      <LinearGradient
+        colors={['#228B22', '#32CD32']}
+        style={styles.header}
+      >
+        <View style={styles.headerTop}>
+          <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+            <ArrowLeft color="#ffffff" size={24} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Help & Support</Text>
+          <View style={styles.placeholder} />
+        </View>
+      </LinearGradient>
+
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Contact Support</Text>
+          {contactOptions.map((option, index) => (
+            <TouchableOpacity key={index} style={styles.contactCard} onPress={option.action}>
+              <View style={styles.contactIcon}>
+                <option.icon color="#228B22" size={24} />
+              </View>
+              <View style={styles.contactInfo}>
+                <Text style={styles.contactTitle}>{option.title}</Text>
+                <Text style={styles.contactSubtitle}>{option.subtitle}</Text>
+              </View>
+              <ChevronRight color="#999999" size={20} />
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Frequently Asked Questions</Text>
+          {helpCategories.map((category, categoryIndex) => (
+            <View key={categoryIndex} style={styles.helpCategory}>
+              <View style={styles.categoryHeader}>
+                <category.icon color="#228B22" size={20} />
+                <Text style={styles.categoryTitle}>{category.title}</Text>
+              </View>
+              {category.items.map((item, itemIndex) => (
+                <TouchableOpacity key={itemIndex} style={styles.helpItem}>
+                  <Text style={styles.helpItemText}>{item}</Text>
+                  <ChevronRight color="#999999" size={16} />
+                </TouchableOpacity>
+              ))}
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.section}>
+          <View style={styles.emergencyCard}>
+            <Text style={styles.emergencyTitle}>Emergency Support</Text>
+            <Text style={styles.emergencyText}>
+              For urgent delivery issues or safety concerns, call our 24/7 emergency line:
+            </Text>
+            <TouchableOpacity 
+              style={styles.emergencyButton}
+              onPress={() => Linking.openURL('tel:+254700000911')}
+            >
+              <Phone color="#ffffff" size={20} />
+              <Text style={styles.emergencyButtonText}>+254 700 000 911</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  header: {
+    paddingTop: 60,
+    paddingBottom: 30,
+    paddingHorizontal: 20,
+  },
+  headerTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  backButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 12,
+    padding: 12,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontFamily: 'Inter-Bold',
+    color: '#ffffff',
+  },
+  placeholder: {
+    width: 48,
+  },
+  content: {
+    flex: 1,
+    padding: 20,
+  },
+  section: {
+    marginBottom: 30,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontFamily: 'Inter-Bold',
+    color: '#333333',
+    marginBottom: 16,
+  },
+  contactCard: {
+    backgroundColor: '#ffffff',
+    borderRadius: 12,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+  },
+  contactIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#E8F5E8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 16,
+  },
+  contactInfo: {
+    flex: 1,
+  },
+  contactTitle: {
+    fontSize: 16,
+    fontFamily: 'Inter-SemiBold',
+    color: '#333333',
+    marginBottom: 4,
+  },
+  contactSubtitle: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#666666',
+  },
+  helpCategory: {
+    backgroundColor: '#ffffff',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+  },
+  categoryHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+    paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
+  },
+  categoryTitle: {
+    fontSize: 16,
+    fontFamily: 'Inter-Bold',
+    color: '#333333',
+    marginLeft: 12,
+  },
+  helpItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f8f9fa',
+  },
+  helpItemText: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#333333',
+    flex: 1,
+  },
+  emergencyCard: {
+    backgroundColor: '#FF4444',
+    borderRadius: 12,
+    padding: 20,
+    alignItems: 'center',
+  },
+  emergencyTitle: {
+    fontSize: 18,
+    fontFamily: 'Inter-Bold',
+    color: '#ffffff',
+    marginBottom: 8,
+  },
+  emergencyText: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    color: '#ffffff',
+    textAlign: 'center',
+    marginBottom: 16,
+    lineHeight: 20,
+  },
+  emergencyButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 25,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  emergencyButtonText: {
+    fontSize: 16,
+    fontFamily: 'Inter-Bold',
+    color: '#ffffff',
+    marginLeft: 8,
+  },
+});

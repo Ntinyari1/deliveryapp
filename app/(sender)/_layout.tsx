@@ -95,6 +95,8 @@ export default function SenderLayout() {
       <Tabs.Screen name="privacy" options={{ href: null }} />
       <Tabs.Screen name="matching" options={{ href: null }} />
       <Tabs.Screen name="tracking" options={{ href: null }} />
+      <Tabs.Screen name="destination-picker" options={{ href: null }} />
+      <Tabs.Screen name="edit-profile" options={{ href: null }} />
     </Tabs>
   );
 }
