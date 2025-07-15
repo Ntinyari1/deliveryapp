@@ -1,8 +1,6 @@
-
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Package, Car, Settings } from 'lucide-react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -19,6 +17,7 @@ export default function AuthIndex() {
       style={styles.container}
     >
       <View style={styles.content}>
+        {/* Header Section */}
         <View style={styles.header}>
           <View style={styles.logo}>
             <Text style={styles.logoText}>TR</Text>
@@ -27,41 +26,20 @@ export default function AuthIndex() {
           <Text style={styles.subtitle}>Swift Delivery, Trusted Journey</Text>
         </View>
 
-        <View style={styles.featuresContainer}>
-          <View style={styles.feature}>
-            <View style={styles.featureIcon}>
-              <Package color="#ffffff" size={32} />
-            </View>
-            <Text style={styles.featureTitle}>Send Parcels</Text>
-            <Text style={styles.featureDescription}>
-              Quick and reliable delivery service
-            </Text>
-          </View>
-          
-          <View style={styles.feature}>
-            <View style={styles.featureIcon}>
-              <Car color="#ffffff" size={32} />
-            </View>
-            <Text style={styles.featureTitle}>Earn Money</Text>
-            <Text style={styles.featureDescription}>
-              Become a rider and earn on your schedule
-            </Text>
-          </View>
-          
-          <View style={styles.feature}>
-            <View style={styles.featureIcon}>
-              <Settings color="#ffffff" size={32} />
-            </View>
-            <Text style={styles.featureTitle}>Manage Platform</Text>
-            <Text style={styles.featureDescription}>
-              Administrative control and oversight
-            </Text>
-          </View>
+        {/* Main Content */}
+        <View style={styles.mainContent}>
+          <Text style={styles.welcomeText}>Welcome to TumaRide</Text>
+          <Text style={styles.descriptionText}>
+            Your reliable delivery and ride service platform
+          </Text>
         </View>
 
-        <TouchableOpacity style={styles.getStartedButton} onPress={handleGetStarted}>
-          <Text style={styles.getStartedButtonText}>Get Started</Text>
-        </TouchableOpacity>
+        {/* Get Started Button */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.getStartedButton} onPress={handleGetStarted}>
+            <Text style={styles.getStartedButtonText}>Get Started</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </LinearGradient>
   );
@@ -73,96 +51,85 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 60,
-    paddingBottom: 40,
+    paddingHorizontal: 30,
+    paddingTop: 80,
+    paddingBottom: 50,
     justifyContent: 'space-between',
   },
   header: {
     alignItems: 'center',
-    paddingTop: 20,
-    marginBottom: 20,
+    flex: 1,
+    justifyContent: 'center',
   },
   logo: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 2,
+    borderWidth: 3,
     borderColor: 'rgba(255, 255, 255, 0.3)',
-    marginBottom: 20,
+    marginBottom: 30,
   },
   logoText: {
-    fontSize: 28,
+    fontSize: 36,
     fontFamily: 'Inter-Bold',
     color: '#ffffff',
   },
   title: {
-    fontSize: 36,
+    fontSize: 42,
     fontFamily: 'Inter-Bold',
     color: '#ffffff',
-    marginBottom: 8,
+    marginBottom: 10,
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontFamily: 'Inter-Regular',
     color: 'rgba(255, 255, 255, 0.9)',
     textAlign: 'center',
-    paddingHorizontal: 20,
+    marginBottom: 40,
   },
-  featuresContainer: {
-    flex: 1,
-    justifyContent: 'center',
+  mainContent: {
+    alignItems: 'center',
     paddingVertical: 20,
-    minHeight: height * 0.4,
   },
-  feature: {
-    alignItems: 'center',
-    marginBottom: 30,
-    paddingHorizontal: 20,
-  },
-  featureIcon: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  featureTitle: {
-    fontSize: 18,
+  welcomeText: {
+    fontSize: 24,
     fontFamily: 'Inter-SemiBold',
     color: '#ffffff',
-    marginBottom: 8,
     textAlign: 'center',
+    marginBottom: 15,
   },
-  featureDescription: {
-    fontSize: 14,
+  descriptionText: {
+    fontSize: 16,
     fontFamily: 'Inter-Regular',
     color: 'rgba(255, 255, 255, 0.8)',
     textAlign: 'center',
-    lineHeight: 20,
-    paddingHorizontal: 10,
+    lineHeight: 24,
+    paddingHorizontal: 20,
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    paddingTop: 20,
   },
   getStartedButton: {
     backgroundColor: '#ffffff',
-    borderRadius: 25,
-    paddingVertical: 15,
-    paddingHorizontal: 30,
+    borderRadius: 30,
+    paddingVertical: 18,
+    paddingHorizontal: 60,
     alignItems: 'center',
-    marginTop: 20,
-    elevation: 5,
+    elevation: 8,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
-    shadowRadius: 5,
+    shadowRadius: 8,
+    width: width * 0.8,
+    maxWidth: 300,
   },
   getStartedButtonText: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'Inter-Bold',
     color: '#228B22',
   },
