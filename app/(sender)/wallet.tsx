@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   topUpButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+    backgroundColor: 'rgba(34, 139, 34, 0.1)',
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderRadius: 25,

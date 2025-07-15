@@ -102,7 +102,7 @@ export default function SenderProfile() {
               style={styles.profileImage}
             />
             <TouchableOpacity style={styles.editButton} onPress={handleEditProfile}>
-              <Edit color="#2E8B57" size={18} />
+              <Edit color="#228B22" size={18} />
             </TouchableOpacity>
           </View>
           <Text style={styles.userName}>{user?.name || 'Sender Name'}</Text>
@@ -155,7 +155,7 @@ export default function SenderProfile() {
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>Settings Menu</Text>
               <TouchableOpacity onPress={() => setMenuVisible(false)}>
-                <X color="#2E8B57" size={24} />
+                <X color="#228B22" size={24} />
               </TouchableOpacity>
             </View>
             

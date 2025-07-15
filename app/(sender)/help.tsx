@@ -277,10 +277,6 @@ const styles = StyleSheet.create({
     color: '#999999',
   },
 });
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
-import { useRouter } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowLeft, MessageCircle, Phone, Mail, FileText, ChevronRight } from 'lucide-react-native';
 
 export default function Help() {
   const router = useRouter();

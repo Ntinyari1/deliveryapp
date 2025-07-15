@@ -124,12 +124,10 @@ export default function DeliveryTracking() {
             </View>
             <View style={styles.riderActions}>
               <TouchableOpacity style={styles.actionButton}>
-                <Phone color="#FF8C00" size={16} />
-              <Phone color="#32CD32" size={16} />
+                <Phone color="#32CD32" size={16} />
               </TouchableOpacity>
               <TouchableOpacity style={styles.actionButton}>
-                <MessageCircle color="#FF8C00" size={16} />
-              <MessageCircle color="#32CD32" size={16} />
+                <MessageCircle color="#32CD32" size={16} />
               </TouchableOpacity>
             </View>
           </View>

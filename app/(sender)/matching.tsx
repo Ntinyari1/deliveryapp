@@ -44,19 +44,21 @@ export default function RiderMatching() {
     setMatchedRider(null);
 
     // Simulate finding another rider
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsSearching(false);
       setMatchedRider({
         id: '2',
-        name: 'Mary Wanjiku',
+        name: 'Peter Kamau',
         rating: 4.9,
         completedRides: 189,
-        vehicle: 'Yamaha YBR 125',
-        estimatedTime: '7 mins',
-        profileImage: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-        phone: '+254723456789',
+        vehicle: 'Yamaha FZ',
+        estimatedTime: '4 mins',
+        profileImage: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400',
+        phone: '+254798765432',
       });
     }, 2000);
+
+    return () => clearTimeout(timer);
   };
 
   if (isSearching) {
@@ -129,13 +131,11 @@ export default function RiderMatching() {
 
           <View style={styles.actionButtons}>
             <TouchableOpacity style={styles.contactButton}>
-              <Phone color="#FF8C00" size={20} />
-            <Phone color="#32CD32" size={20} />
+              <Phone color="#32CD32" size={20} />
               <Text style={styles.contactButtonText}>Call</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.contactButton}>
-              <MessageCircle color="#FF8C00" size={20} />
-            <MessageCircle color="#32CD32" size={20} />
+              <MessageCircle color="#32CD32" size={20} />
               <Text style={styles.contactButtonText}>Message</Text>
             </TouchableOpacity>
           </View>
