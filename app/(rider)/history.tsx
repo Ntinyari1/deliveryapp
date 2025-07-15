@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Search, Filter, Star, Clock, Package, MapPin, ArrowLeft, ArrowRight } from 'lucide-react-native';
-import { useRouter } from 'expo-router';
+import { Search, Filter, Star, Clock, Package, MapPin, DollarSign } from 'lucide-react-native';
 
-export default function DeliveryHistory() {
-  const router = useRouter();
+export default function RiderHistory() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
 
@@ -16,11 +14,10 @@ export default function DeliveryHistory() {
       to: 'Karen Shopping Centre',
       date: '2024-01-15',
       time: '14:30',
-      status: 'delivered',
-      amount: 'KSh 350',
-      riderName: 'James Mwangi',
-      rating: 5,
+      status: 'completed',
+      earnings: 'KSh 350',
       packageType: 'Document',
+      rating: 5,
     },
     {
       id: '2',
@@ -28,11 +25,10 @@ export default function DeliveryHistory() {
       to: 'Kilimani',
       date: '2024-01-14',
       time: '10:15',
-      status: 'delivered',
-      amount: 'KSh 280',
-      riderName: 'Mary Wanjiku',
-      rating: 4,
+      status: 'completed',
+      earnings: 'KSh 280',
       packageType: 'Small Package',
+      rating: 4,
     },
     {
       id: '3',
@@ -40,11 +36,10 @@ export default function DeliveryHistory() {
       to: 'Lavington',
       date: '2024-01-13',
       time: '16:45',
-      status: 'delivered',
-      amount: 'KSh 420',
-      riderName: 'John Kimani',
-      rating: 5,
+      status: 'completed',
+      earnings: 'KSh 420',
       packageType: 'Electronics',
+      rating: 5,
     },
     {
       id: '4',
@@ -53,16 +48,15 @@ export default function DeliveryHistory() {
       date: '2024-01-12',
       time: '09:20',
       status: 'cancelled',
-      amount: 'KSh 300',
-      riderName: null,
-      rating: null,
+      earnings: 'KSh 0',
       packageType: 'Fragile Item',
+      rating: null,
     },
   ];
 
   const filters = [
     { key: 'all', label: 'All', count: deliveries.length },
-    { key: 'delivered', label: 'Delivered', count: deliveries.filter(d => d.status === 'delivered').length },
+    { key: 'completed', label: 'Completed', count: deliveries.filter(d => d.status === 'completed').length },
     { key: 'cancelled', label: 'Cancelled', count: deliveries.filter(d => d.status === 'cancelled').length },
   ];
 
@@ -76,7 +70,7 @@ export default function DeliveryHistory() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'delivered': return '#32CD32';
+      case 'completed': return '#32CD32';
       case 'cancelled': return '#FF6347';
       default: return '#666666';
     }
@@ -84,7 +78,7 @@ export default function DeliveryHistory() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'delivered': return 'Delivered';
+      case 'completed': return 'Completed';
       case 'cancelled': return 'Cancelled';
       default: return status;
     }
@@ -98,7 +92,6 @@ export default function DeliveryHistory() {
             <MapPin color="#32CD32" size={16} />
             <Text style={styles.locationText} numberOfLines={1}>{item.from}</Text>
           </View>
-          <ArrowRight color="#999999" size={16} style={styles.routeArrow} />
           <View style={styles.locationPoint}>
             <MapPin color="#FF6347" size={16} />
             <Text style={styles.locationText} numberOfLines={1}>{item.to}</Text>
@@ -121,16 +114,13 @@ export default function DeliveryHistory() {
           <Clock color="#666666" size={16} />
           <Text style={styles.detailText}>{item.date} at {item.time}</Text>
         </View>
-        {item.riderName && (
-          <View style={styles.detailRow}>
-            <Text style={styles.riderLabel}>Rider:</Text>
-            <Text style={styles.riderName}>{item.riderName}</Text>
-          </View>
-        )}
       </View>
 
       <View style={styles.deliveryFooter}>
-        <Text style={styles.amountText}>{item.amount}</Text>
+        <View style={styles.earningsContainer}>
+          <DollarSign color="#32CD32" size={16} />
+          <Text style={styles.earningsText}>{item.earnings}</Text>
+        </View>
         {item.rating && (
           <View style={styles.ratingContainer}>
             <Star color="#FFD700" size={16} fill="#FFD700" />
@@ -148,11 +138,8 @@ export default function DeliveryHistory() {
         style={styles.header}
       >
         <View style={styles.headerContent}>
-          <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-            <ArrowLeft color="#ffffff" size={24} />
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>Delivery History</Text>
-          <Text style={styles.headerSubtitle}>Track your past deliveries</Text>
+          <Text style={styles.headerTitle}>📋 Delivery History</Text>
+          <Text style={styles.headerSubtitle}>Track your completed deliveries</Text>
         </View>
       </LinearGradient>
 
@@ -164,8 +151,7 @@ export default function DeliveryHistory() {
             <Text style={styles.searchPlaceholder}>Search deliveries...</Text>
           </View>
           <TouchableOpacity style={styles.filterButton}>
-            <Filter color="#FF8C00" size={20} />
-          <Filter color="#32CD32" size={20} />
+            <Filter color="#32CD32" size={20} />
           </TouchableOpacity>
         </View>
 
@@ -217,10 +203,6 @@ const styles = StyleSheet.create({
   },
   headerContent: {
     alignItems: 'flex-start',
-  },
-  backButton: {
-    marginBottom: 20,
-    padding: 5,
   },
   headerTitle: {
     fontSize: 28,
@@ -322,15 +304,12 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   routeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
     marginBottom: 12,
     gap: 8,
   },
   locationPoint: {
     flexDirection: 'row',
     alignItems: 'center',
-    flex: 1,
     gap: 6,
   },
   locationText: {
@@ -338,9 +317,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-SemiBold',
     color: '#32CD32',
     flex: 1,
-  },
-  routeArrow: {
-    marginHorizontal: 5,
   },
   statusBadge: {
     alignSelf: 'flex-start',
@@ -366,16 +342,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     color: '#666666',
   },
-  riderLabel: {
-    fontSize: 14,
-    fontFamily: 'Inter-Medium',
-    color: '#666666',
-  },
-  riderName: {
-    fontSize: 14,
-    fontFamily: 'Inter-SemiBold',
-    color: '#32CD32',
-  },
   deliveryFooter: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -384,7 +350,12 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#f0f0f0',
   },
-  amountText: {
+  earningsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  earningsText: {
     fontSize: 18,
     fontFamily: 'Inter-Bold',
     color: '#32CD32',

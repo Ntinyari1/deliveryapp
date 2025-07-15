@@ -31,7 +31,7 @@ export default function RoleSelection() {
           onPress={() => handleRoleSelect('sender')}
         >
           <View style={styles.roleIcon}>
-            <Package color="#667eea" size={24} />
+            <Package color="#32CD32" size={24} />
           </View>
           <Text style={styles.roleTitle}>Sender</Text>
           <Text style={styles.roleDescription}>
@@ -44,24 +44,11 @@ export default function RoleSelection() {
           onPress={() => handleRoleSelect('rider')}
         >
           <View style={styles.roleIcon}>
-            <Car color="#667eea" size={24} />
+            <Car color="#32CD32" size={24} />
           </View>
           <Text style={styles.roleTitle}>Rider</Text>
           <Text style={styles.roleDescription}>
             Deliver packages and earn money on your schedule
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.roleCard}
-          onPress={() => handleRoleSelect('admin')}
-        >
-          <View style={styles.roleIcon}>
-            <Settings color="#667eea" size={24} />
-          </View>
-          <Text style={styles.roleTitle}>Administrator</Text>
-          <Text style={styles.roleDescription}>
-            Manage the platform and oversee operations
           </Text>
         </TouchableOpacity>
       </View>
@@ -119,7 +106,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: 'rgba(255, 215, 0, 0.1)',
+    backgroundColor: 'rgba(50, 205, 50, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 16,

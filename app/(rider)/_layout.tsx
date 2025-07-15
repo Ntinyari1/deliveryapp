@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, Package, Clock, User } from 'lucide-react-native';
+import { Home, MapPin, Clock, User } from 'lucide-react-native';
 
-export default function SenderLayout() {
+export default function RiderLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -51,11 +51,11 @@ export default function SenderLayout() {
         }}
       />
       <Tabs.Screen
-        name="send"
+        name="deliveries"
         options={{
-          title: 'Send',
+          title: 'Deliveries',
           tabBarIcon: ({ color, focused }) => (
-            <Package 
+            <MapPin 
               color={color} 
               size={focused ? 28 : 24} 
               strokeWidth={focused ? 2.5 : 2}
@@ -89,12 +89,9 @@ export default function SenderLayout() {
           ),
         }}
       />
-      <Tabs.Screen name="wallet" options={{ href: null }} />
+      <Tabs.Screen name="earnings" options={{ href: null }} />
       <Tabs.Screen name="settings" options={{ href: null }} />
-      <Tabs.Screen name="help" options={{ href: null }} />
-      <Tabs.Screen name="privacy" options={{ href: null }} />
-      <Tabs.Screen name="matching" options={{ href: null }} />
-      <Tabs.Screen name="tracking" options={{ href: null }} />
+      <Tabs.Screen name="edit-profile" options={{ href: null }} />
     </Tabs>
   );
 }

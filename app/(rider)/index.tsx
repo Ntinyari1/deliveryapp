@@ -1,46 +1,49 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Package, Clock, Star, TrendingUp, Plus, ArrowRight } from 'lucide-react-native';
+import { MapPin, Package, DollarSign, Star, TrendingUp, Play, Clock } from 'lucide-react-native';
 import { useAuth } from '@/context/AuthContext';
 
 const { width } = Dimensions.get('window');
 
-export default function SenderHome() {
+export default function RiderHome() {
   const router = useRouter();
   const { user } = useAuth();
 
   const stats = [
-    { label: 'Total Deliveries', value: '24', icon: Package, color: '#FF8C00' },
-    { label: 'Pending', value: '2', icon: Clock, color: '#FFD700' },
-    { label: 'Rating', value: '4.8', icon: Star, color: '#32CD32' },
-    { label: 'Saved', value: '15%', icon: TrendingUp, color: '#FF6347' },
+    { label: 'Total Deliveries', value: '156', icon: Package, color: '#32CD32' },
+    { label: 'Today\'s Earnings', value: 'KSh 2,450', icon: DollarSign, color: '#FFD700' },
+    { label: 'Rating', value: '4.9', icon: Star, color: '#FF6347' },
+    { label: 'This Week', value: '23', icon: TrendingUp, color: '#1E90FF' },
   ];
 
-  const recentDeliveries = [
+  const availableDeliveries = [
     {
       id: '1',
-      from: 'Westlands',
-      to: 'Karen',
-      status: 'Delivered',
-      date: '2 hours ago',
-      amount: 'KSh 350',
+      from: 'Westlands Shopping Mall',
+      to: 'Karen Shopping Centre',
+      distance: '12 km',
+      payment: 'KSh 350',
+      packageType: 'Document',
+      estimatedTime: '25 mins',
     },
     {
       id: '2',
-      from: 'CBD',
+      from: 'CBD - Kencom',
       to: 'Kilimani',
-      status: 'In Transit',
-      date: '1 day ago',
-      amount: 'KSh 280',
+      distance: '5.2 km',
+      payment: 'KSh 280',
+      packageType: 'Small Package',
+      estimatedTime: '15 mins',
     },
     {
       id: '3',
       from: 'Parklands',
       to: 'Lavington',
-      status: 'Delivered',
-      date: '3 days ago',
-      amount: 'KSh 420',
+      distance: '8.5 km',
+      payment: 'KSh 420',
+      packageType: 'Electronics',
+      estimatedTime: '18 mins',
     },
   ];
 
@@ -52,8 +55,8 @@ export default function SenderHome() {
       >
         <View style={styles.headerContent}>
           <Text style={styles.greeting}>Good morning,</Text>
-          <Text style={styles.userName}>{user?.name || 'User'}</Text>
-          <Text style={styles.subtitle}>Ready to send a package?</Text>
+          <Text style={styles.userName}>{user?.name || 'Rider'}</Text>
+          <Text style={styles.subtitle}>Ready to earn today?</Text>
         </View>
       </LinearGradient>
 
@@ -64,7 +67,7 @@ export default function SenderHome() {
       >
         {/* Stats Grid */}
         <View style={styles.statsSection}>
-          <Text style={styles.sectionTitle}>📊 Your Overview</Text>
+          <Text style={styles.sectionTitle}>📊 Your Performance</Text>
           <View style={styles.statsGrid}>
             {stats.map((stat, index) => (
               <TouchableOpacity key={index} style={styles.statCard} activeOpacity={0.8}>
@@ -78,56 +81,59 @@ export default function SenderHome() {
           </View>
         </View>
 
-        {/* Send Package Button */}
+        {/* Go Online Button */}
         <TouchableOpacity
-          style={styles.sendPackageButton}
-          onPress={() => router.push('/(sender)/destination-picker')}
+          style={styles.onlineButton}
+          onPress={() => router.push('/(rider)/deliveries')}
           activeOpacity={0.9}
         >
           <LinearGradient
-            colors={['#FFD700', '#DAA520']}
-            style={styles.sendButtonGradient}
+            colors={['#32CD32', '#228B22']}
+            style={styles.onlineButtonGradient}
           >
-            <Plus color="#ffffff" size={24} />
-            <Text style={styles.sendButtonText}>Find a Rider</Text>
-            <ArrowRight color="#ffffff" size={20} />
+            <Play color="#ffffff" size={24} />
+            <Text style={styles.onlineButtonText}>Go Online</Text>
           </LinearGradient>
         </TouchableOpacity>
 
-        {/* Recent Deliveries */}
+        {/* Available Deliveries */}
         <View style={styles.deliveriesSection}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>📦 Recent Deliveries</Text>
-            <TouchableOpacity onPress={() => router.push('/(sender)/history')}>
+            <Text style={styles.sectionTitle}>📦 Available Deliveries</Text>
+            <TouchableOpacity onPress={() => router.push('/(rider)/deliveries')}>
               <Text style={styles.viewAllText}>View All</Text>
             </TouchableOpacity>
           </View>
           
-          {recentDeliveries.map((delivery) => (
+          {availableDeliveries.map((delivery) => (
             <TouchableOpacity key={delivery.id} style={styles.deliveryCard} activeOpacity={0.8}>
               <View style={styles.deliveryHeader}>
                 <View style={styles.routeContainer}>
                   <Text style={styles.routeText}>{delivery.from}</Text>
-                  <ArrowRight color="#999999" size={16} />
+                  <MapPin color="#999999" size={16} />
                   <Text style={styles.routeText}>{delivery.to}</Text>
                 </View>
-                <Text style={styles.amountText}>{delivery.amount}</Text>
+                <Text style={styles.paymentText}>{delivery.payment}</Text>
               </View>
               
-              <View style={styles.deliveryFooter}>
-                <View style={[
-                  styles.statusBadge,
-                  delivery.status === 'Delivered' ? styles.statusDelivered : styles.statusInTransit
-                ]}>
-                  <Text style={[
-                    styles.statusText,
-                    delivery.status === 'Delivered' ? styles.statusDeliveredText : styles.statusInTransitText
-                  ]}>
-                    {delivery.status}
-                  </Text>
+              <View style={styles.deliveryDetails}>
+                <View style={styles.detailItem}>
+                  <Package color="#666666" size={16} />
+                  <Text style={styles.detailText}>{delivery.packageType}</Text>
                 </View>
-                <Text style={styles.dateText}>{delivery.date}</Text>
+                <View style={styles.detailItem}>
+                  <MapPin color="#666666" size={16} />
+                  <Text style={styles.detailText}>{delivery.distance}</Text>
+                </View>
+                <View style={styles.detailItem}>
+                  <Clock color="#666666" size={16} />
+                  <Text style={styles.detailText}>{delivery.estimatedTime}</Text>
+                </View>
               </View>
+
+              <TouchableOpacity style={styles.acceptButton}>
+                <Text style={styles.acceptButtonText}>Accept Delivery</Text>
+              </TouchableOpacity>
             </TouchableOpacity>
           ))}
         </View>
@@ -171,7 +177,7 @@ const styles = StyleSheet.create({
   scrollContainer: {
     paddingHorizontal: 25,
     paddingTop: 30,
-    paddingBottom: 120, // Space for tab bar
+    paddingBottom: 140,
   },
   statsSection: {
     marginBottom: 35,
@@ -233,7 +239,7 @@ const styles = StyleSheet.create({
     color: '#666666',
     textAlign: 'center',
   },
-  sendPackageButton: {
+  onlineButton: {
     marginBottom: 35,
     borderRadius: 20,
     elevation: 6,
@@ -242,7 +248,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 8,
   },
-  sendButtonGradient: {
+  onlineButtonGradient: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -251,12 +257,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     gap: 12,
   },
-  sendButtonText: {
+  onlineButtonText: {
     fontSize: 18,
     fontFamily: 'Inter-Bold',
     color: '#ffffff',
-    flex: 1,
-    textAlign: 'center',
   },
   deliveriesSection: {
     marginBottom: 40,
@@ -285,44 +289,40 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   routeText: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Inter-SemiBold',
     color: '#228B22',
+    flex: 1,
   },
-  amountText: {
-    fontSize: 16,
+  paymentText: {
+    fontSize: 18,
     fontFamily: 'Inter-Bold',
-    color: '#228B22',
-  },
-  deliveryFooter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  statusBadge: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 12,
-  },
-  statusDelivered: {
-    backgroundColor: 'rgba(50, 205, 50, 0.15)',
-  },
-  statusInTransit: {
-    backgroundColor: 'rgba(255, 215, 0, 0.15)',
-  },
-  statusText: {
-    fontSize: 13,
-    fontFamily: 'Inter-SemiBold',
-  },
-  statusDeliveredText: {
     color: '#32CD32',
   },
-  statusInTransitText: {
-    color: '#FFD700',
+  deliveryDetails: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 15,
   },
-  dateText: {
-    fontSize: 14,
+  detailItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  detailText: {
+    fontSize: 12,
     fontFamily: 'Inter-Regular',
     color: '#666666',
+  },
+  acceptButton: {
+    backgroundColor: '#228B22',
+    borderRadius: 12,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  acceptButtonText: {
+    fontSize: 14,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
   },
 });

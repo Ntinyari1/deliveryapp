@@ -13,6 +13,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   login: (userData: User) => void;
+  updateUser: (userData: User) => void;
   logout: () => void;
   isLoading: boolean;
 }
@@ -45,12 +46,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(userData);
   };
 
+  const updateUser = (userData: User) => {
+    setUser(userData);
+  };
+
   const logout = () => {
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isLoading }}>
+    <AuthContext.Provider value={{ user, login, updateUser, logout, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

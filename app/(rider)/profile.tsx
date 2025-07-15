@@ -2,36 +2,36 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Alert, Modal } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { User, Wallet, Settings, CircleHelp as HelpCircle, Shield, LogOut, CreditCard as Edit, Star, Package, Clock, TrendingUp, ChevronRight, Menu, X } from 'lucide-react-native';
+import { User, DollarSign, Settings, CircleHelp as HelpCircle, Shield, LogOut, Edit, Star, Package, Clock, TrendingUp, ChevronRight, Menu, X } from 'lucide-react-native';
 import { useAuth } from '@/context/AuthContext';
 
-export default function SenderProfile() {
+export default function RiderProfile() {
   const router = useRouter();
   const { user, logout } = useAuth();
   const [menuVisible, setMenuVisible] = useState(false);
 
   const stats = [
-    { label: 'Total Deliveries', value: '24', icon: Package, color: '#FF8C00' },
-    { label: 'Average Rating', value: '4.8', icon: Star, color: '#32CD32' },
-    { label: 'This Month', value: '8', icon: Clock, color: '#FFD700' },
-    { label: 'Money Saved', value: '15%', icon: TrendingUp, color: '#FF6347' },
+    { label: 'Total Deliveries', value: '156', icon: Package, color: '#32CD32' },
+    { label: 'Average Rating', value: '4.9', icon: Star, color: '#FFD700' },
+    { label: 'This Month', value: '23', icon: Clock, color: '#1E90FF' },
+    { label: 'Total Earnings', value: 'KSh 45,600', icon: TrendingUp, color: '#FF6347' },
   ];
 
   const menuItems = [
     { 
-      id: 'wallet', 
-      title: 'Wallet & Payments', 
-      subtitle: 'Manage your payment methods', 
-      icon: Wallet, 
-      color: '#FF8C00',
-      route: 'wallet'
+      id: 'earnings', 
+      title: 'Earnings & Payouts', 
+      subtitle: 'View your earnings and payment history', 
+      icon: DollarSign, 
+      color: '#32CD32',
+      route: 'earnings'
     },
     { 
       id: 'settings', 
       title: 'App Settings', 
       subtitle: 'Notifications & preferences', 
       icon: Settings, 
-      color: '#32CD32',
+      color: '#1E90FF',
       route: 'settings'
     },
     { 
@@ -39,7 +39,7 @@ export default function SenderProfile() {
       title: 'Help & Support', 
       subtitle: 'Get help and contact support', 
       icon: HelpCircle, 
-      color: '#1E90FF',
+      color: '#FFD700',
       route: 'help'
     },
     { 
@@ -54,7 +54,7 @@ export default function SenderProfile() {
 
   const handleMenuPress = (item: any) => {
     setMenuVisible(false);
-    router.push(`/(sender)/${item.route}`);
+    router.push(`/(rider)/${item.route}`);
   };
 
   const handleLogout = () => {
@@ -76,11 +76,7 @@ export default function SenderProfile() {
   };
 
   const handleEditProfile = () => {
-    Alert.alert(
-      'Edit Profile',
-      'Opening profile editor...',
-      [{ text: 'OK' }]
-    );
+    router.push('/(rider)/edit-profile');
   };
 
   return (
@@ -106,18 +102,21 @@ export default function SenderProfile() {
               style={styles.profileImage}
             />
             <TouchableOpacity style={styles.editButton} onPress={handleEditProfile}>
-              <Edit color="#2E8B57" size={18} />
+              <Edit color="#228B22" size={18} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.userName}>{user?.name || 'John Doe'}</Text>
-          <Text style={styles.userEmail}>{user?.email || 'john@example.com'}</Text>
+          <Text style={styles.userName}>{user?.name || 'Rider Name'}</Text>
+          <Text style={styles.userEmail}>{user?.email || 'rider@example.com'}</Text>
+          <View style={styles.riderBadge}>
+            <Text style={styles.riderBadgeText}>Verified Rider</Text>
+          </View>
         </View>
       </LinearGradient>
 
       <View style={styles.content}>
         <View style={styles.statsContainer}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>📊 Your Statistics</Text>
+            <Text style={styles.sectionTitle}>📊 Your Performance</Text>
           </View>
           <View style={styles.statsGrid}>
             {stats.map((stat, index) => (
@@ -144,7 +143,7 @@ export default function SenderProfile() {
           <ChevronRight color="#FF4444" size={20} />
         </TouchableOpacity>
 
-        <Text style={styles.versionText}>TumaRide Version 1.0.0</Text>
+        <Text style={styles.versionText}>TumaRide Rider Version 1.0.0</Text>
       </View>
 
       {/* Menu Modal */}
@@ -157,9 +156,9 @@ export default function SenderProfile() {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Settings Menu</Text>
+              <Text style={styles.modalTitle}>Rider Settings</Text>
               <TouchableOpacity onPress={() => setMenuVisible(false)}>
-                <X color="#2E8B57" size={24} />
+                <X color="#228B22" size={24} />
               </TouchableOpacity>
             </View>
             
@@ -255,12 +254,24 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     color: 'rgba(255, 255, 255, 0.8)',
     textAlign: 'center',
+    marginBottom: 15,
+  },
+  riderBadge: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  riderBadgeText: {
+    fontSize: 14,
+    fontFamily: 'Inter-SemiBold',
+    color: '#ffffff',
   },
   content: {
     flex: 1,
     paddingHorizontal: 25,
     paddingTop: 35,
-    paddingBottom: 120,
+    paddingBottom: 140,
   },
   sectionTitle: {
     fontSize: 22,
