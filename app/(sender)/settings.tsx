@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Switch, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowLeft, Bell, MapPin, Moon, Globe, Volume2, Smartphone, ChevronRight } from 'lucide-react-native';
+import { ArrowLeft, Bell, MapPin, Moon, Volume2, Globe, Smartphone, ChevronRight } from 'lucide-react-native';
 
 export default function SettingsPage() {
   const router = useRouter();
@@ -15,10 +15,10 @@ export default function SettingsPage() {
     vibration: true,
   });
 
-  const toggleSetting = (key: string) => {
+  const toggleSetting = (key) => {
     setSettings(prev => ({
       ...prev,
-      [key]: !prev[key as keyof typeof prev],
+      [key]: !prev[key],
     }));
   };
 
@@ -90,10 +90,10 @@ export default function SettingsPage() {
                   <Text style={styles.settingDescription}>{item.description}</Text>
                 </View>
                 <Switch
-                  value={settings[item.key as keyof typeof settings] as boolean}
+                  value={settings[item.key]}
                   onValueChange={() => toggleSetting(item.key)}
                   trackColor={{ false: '#E0E0E0', true: '#32CD32' }}
-                  thumbColor={settings[item.key as keyof typeof settings] ? '#ffffff' : '#f4f3f4'}
+                  thumbColor={settings[item.key] ? '#ffffff' : '#f4f3f4'}
                 />
               </View>
             ))}
@@ -250,235 +250,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
     color: '#FF4444',
-  },
-});
-import { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Switch } from 'react-native';
-import { useRouter } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
-import { ArrowLeft, Bell, MapPin, Moon, Volume2, Globe, Smartphone, ChevronRight } from 'lucide-react-native';
-
-export default function Settings() {
-  const router = useRouter();
-  
-  const [settings, setSettings] = useState({
-    pushNotifications: true,
-    emailNotifications: false,
-    locationServices: true,
-    darkMode: false,
-    soundEffects: true,
-    vibration: true,
-  });
-
-  const handleToggleSetting = (key: string) => {
-    setSettings(prev => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
-  };
-
-  const settingsGroups = [
-    {
-      title: 'Notifications',
-      icon: Bell,
-      items: [
-        { key: 'pushNotifications', label: 'Push Notifications', description: 'Receive delivery updates' },
-        { key: 'emailNotifications', label: 'Email Notifications', description: 'Get updates via email' },
-      ]
-    },
-    {
-      title: 'Privacy & Location',
-      icon: MapPin,
-      items: [
-        { key: 'locationServices', label: 'Location Services', description: 'Allow location access for deliveries' },
-      ]
-    },
-    {
-      title: 'Appearance',
-      icon: Moon,
-      items: [
-        { key: 'darkMode', label: 'Dark Mode', description: 'Use dark theme' },
-      ]
-    },
-    {
-      title: 'Sound & Haptics',
-      icon: Volume2,
-      items: [
-        { key: 'soundEffects', label: 'Sound Effects', description: 'Play notification sounds' },
-        { key: 'vibration', label: 'Vibration', description: 'Vibrate for notifications' },
-      ]
-    },
-  ];
-
-  const actionItems = [
-    { title: 'Language', subtitle: 'English', icon: Globe },
-    { title: 'App Version', subtitle: '1.0.0', icon: Smartphone },
-  ];
-
-  return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['#228B22', '#32CD32']}
-        style={styles.header}
-      >
-        <View style={styles.headerTop}>
-          <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-            <ArrowLeft color="#ffffff" size={24} />
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>App Settings</Text>
-          <View style={styles.placeholder} />
-        </View>
-      </LinearGradient>
-
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {settingsGroups.map((group, groupIndex) => (
-          <View key={groupIndex} style={styles.settingsGroup}>
-            <View style={styles.groupHeader}>
-              <group.icon color="#228B22" size={20} />
-              <Text style={styles.groupTitle}>{group.title}</Text>
-            </View>
-            
-            {group.items.map((item, itemIndex) => (
-              <View key={itemIndex} style={styles.settingItem}>
-                <View style={styles.settingInfo}>
-                  <Text style={styles.settingLabel}>{item.label}</Text>
-                  <Text style={styles.settingDescription}>{item.description}</Text>
-                </View>
-                <Switch
-                  value={settings[item.key]}
-                  onValueChange={() => handleToggleSetting(item.key)}
-                  trackColor={{ false: '#E0E0E0', true: '#228B22' }}
-                  thumbColor={settings[item.key] ? '#ffffff' : '#f4f3f4'}
-                />
-              </View>
-            ))}
-          </View>
-        ))}
-
-        <View style={styles.settingsGroup}>
-          <View style={styles.groupHeader}>
-            <Globe color="#228B22" size={20} />
-            <Text style={styles.groupTitle}>General</Text>
-          </View>
-          
-          {actionItems.map((item, index) => (
-            <TouchableOpacity key={index} style={styles.actionItem}>
-              <View style={styles.actionIcon}>
-                <item.icon color="#666666" size={20} />
-              </View>
-              <View style={styles.actionInfo}>
-                <Text style={styles.actionTitle}>{item.title}</Text>
-                <Text style={styles.actionSubtitle}>{item.subtitle}</Text>
-              </View>
-              <ChevronRight color="#999999" size={20} />
-            </TouchableOpacity>
-          ))}
-        </View>
-      </ScrollView>
-    </View>
-  );
-}
-  },
-  header: {
-    paddingTop: 60,
-    paddingBottom: 30,
-    paddingHorizontal: 20,
-  },
-  headerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  backButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 12,
-    padding: 12,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontFamily: 'Inter-Bold',
-    color: '#ffffff',
-  },
-  placeholder: {
-    width: 48,
-  },
-  content: {
-    flex: 1,
-    padding: 20,
-  },
-  settingsGroup: {
-    backgroundColor: '#ffffff',
-    borderRadius: 16,
-    padding: 20,
-    marginBottom: 20,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-  },
-  groupHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  groupTitle: {
-    fontSize: 18,
-    fontFamily: 'Inter-Bold',
-    color: '#333333',
-    marginLeft: 12,
-  },
-  settingItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
-  },
-  settingInfo: {
-    flex: 1,
-    marginRight: 16,
-  },
-  settingLabel: {
-    fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#333333',
-    marginBottom: 4,
-  },
-  settingDescription: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#666666',
-  },
-  actionItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
-  },
-  actionIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#f8f9fa',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 16,
-  },
-  actionInfo: {
-    flex: 1,
-  },
-  actionTitle: {
-    fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#333333',
-    marginBottom: 2,
-  },
-  actionSubtitle: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#666666',
   },
 });
