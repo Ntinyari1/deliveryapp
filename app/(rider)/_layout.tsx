@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Home, MapPin, Clock, User } from 'lucide-react-native';
+import { Chrome as Home, MapPin, Clock, User } from 'lucide-react-native';
 
 export default function RiderLayout() {
   return (
