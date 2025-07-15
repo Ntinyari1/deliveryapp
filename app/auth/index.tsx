@@ -1,3 +1,4 @@
+
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -72,12 +73,15 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 60,
+    paddingBottom: 40,
     justifyContent: 'space-between',
   },
   header: {
     alignItems: 'center',
-    marginTop: 80,
+    paddingTop: 20,
+    marginBottom: 20,
   },
   logo: {
     width: 80,
@@ -100,21 +104,24 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Bold',
     color: '#ffffff',
     marginBottom: 8,
+    textAlign: 'center',
   },
   subtitle: {
     fontSize: 16,
     fontFamily: 'Inter-Regular',
     color: 'rgba(255, 255, 255, 0.9)',
     textAlign: 'center',
+    paddingHorizontal: 20,
   },
   featuresContainer: {
     flex: 1,
     justifyContent: 'center',
-    paddingVertical: 40,
+    paddingVertical: 20,
+    minHeight: height * 0.4,
   },
   feature: {
     alignItems: 'center',
-    marginBottom: 40,
+    marginBottom: 30,
     paddingHorizontal: 20,
   },
   featureIcon: {
@@ -131,6 +138,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-SemiBold',
     color: '#ffffff',
     marginBottom: 8,
+    textAlign: 'center',
   },
   featureDescription: {
     fontSize: 14,
@@ -138,23 +146,24 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.8)',
     textAlign: 'center',
     lineHeight: 20,
+    paddingHorizontal: 10,
   },
   getStartedButton: {
     backgroundColor: '#ffffff',
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    borderRadius: 30,
+    borderRadius: 25,
+    paddingVertical: 15,
+    paddingHorizontal: 30,
     alignItems: 'center',
-    marginBottom: 40,
-    elevation: 3,
+    marginTop: 20,
+    elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
   },
   getStartedButtonText: {
     fontSize: 18,
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: 'Inter-Bold',
     color: '#228B22',
   },
 });
