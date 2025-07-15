@@ -158,7 +158,7 @@ export default function SenderProfile() {
                 <X color="#228B22" size={24} />
               </TouchableOpacity>
             </View>
-            
+
             {menuItems.map((item) => (
               <TouchableOpacity 
                 key={item.id} 
@@ -261,7 +261,8 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 22,
     fontFamily: 'Inter-Bold',
-    color: '#228B22',
+    color: '#1a1a1a',
+    marginBottom: 25,
   },
   sectionHeader: {
     marginBottom: 25,
@@ -275,40 +276,29 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   statCard: {
-    width: '47%',
     backgroundColor: '#ffffff',
-    borderRadius: 20,
-    padding: 25,
+    borderRadius: 18,
+    padding: 20,
+    width: '48%',
+    alignItems: 'center',
     marginBottom: 20,
-    alignItems: 'center',
-    elevation: 4,
+    elevation: 3,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    minHeight: 140,
-    justifyContent: 'center',
-  },
-  statIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 15,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
   statValue: {
     fontSize: 28,
     fontFamily: 'Inter-Bold',
-    color: '#228B22',
-    marginBottom: 8,
+    color: '#1a1a1a',
+    marginVertical: 8,
   },
   statLabel: {
     fontSize: 14,
-    fontFamily: 'Inter-Medium',
+    fontFamily: 'Inter-Regular',
     color: '#666666',
     textAlign: 'center',
-    lineHeight: 20,
   },
   logoutButton: {
     flexDirection: 'row',
@@ -357,54 +347,38 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    paddingHorizontal: 25,
     paddingTop: 25,
+    paddingHorizontal: 25,
     paddingBottom: 40,
-    maxHeight: '80%',
+    maxHeight: '70%',
   },
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 30,
-    paddingBottom: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
+    marginBottom: 25,
   },
   modalTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#228B22',
+    color: '#1a1a1a',
   },
-  modalMenuItem: {
+  menuItems: {
+    flex: 1,
+  },
+  menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 20,
+    paddingVertical: 18,
+    paddingHorizontal: 5,
     borderBottomWidth: 1,
-    borderBottomColor: '#f8f9fa',
+    borderBottomColor: '#f0f0f0',
   },
-  modalMenuIcon: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 15,
-  },
-  modalMenuContent: {
+  menuItemText: {
     flex: 1,
-    paddingRight: 15,
-  },
-  modalMenuTitle: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#228B22',
-    marginBottom: 4,
-  },
-  modalMenuSubtitle: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#666666',
-    lineHeight: 20,
+    color: '#333333',
+    marginLeft: 20,
   },
 });
