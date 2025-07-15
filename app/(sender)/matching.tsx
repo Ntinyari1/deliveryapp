@@ -90,7 +90,7 @@ export default function RiderMatching() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#FF8C00', '#FF6347']}
+        colors={['#32CD32', '#228B22']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -130,10 +130,12 @@ export default function RiderMatching() {
           <View style={styles.actionButtons}>
             <TouchableOpacity style={styles.contactButton}>
               <Phone color="#FF8C00" size={20} />
+            <Phone color="#32CD32" size={20} />
               <Text style={styles.contactButtonText}>Call</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.contactButton}>
               <MessageCircle color="#FF8C00" size={20} />
+            <MessageCircle color="#32CD32" size={20} />
               <Text style={styles.contactButtonText}>Message</Text>
             </TouchableOpacity>
           </View>
@@ -163,7 +165,7 @@ export default function RiderMatching() {
           </TouchableOpacity>
           <TouchableOpacity style={styles.acceptButton} onPress={handleAcceptRider}>
             <LinearGradient
-              colors={['#FF8C00', '#FF7F00']}
+              colors={['#32CD32', '#228B22']}
               style={styles.acceptButtonGradient}
             >
               <Text style={styles.acceptButtonText}>Accept Rider</Text>
@@ -331,7 +333,7 @@ const styles = StyleSheet.create({
   contactButtonText: {
     fontSize: 14,
     fontFamily: 'Inter-Medium',
-    color: '#FF8C00',
+    color: '#32CD32',
     marginLeft: 6,
   },
   tripDetails: {
@@ -363,7 +365,7 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: '#B8860B',
+    backgroundColor: '#228B22',
     marginRight: 16,
   },
   routeIconDestination: {

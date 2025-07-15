@@ -39,7 +39,7 @@ export default function Login() {
 
   return (
     <LinearGradient
-      colors={['#800000', '#B22222']}
+      colors={['#228B22', '#32CD32']}
       style={styles.container}
     >
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -185,10 +185,10 @@ const styles = StyleSheet.create({
   forgotPasswordText: {
     fontSize: 14,
     fontFamily: 'Inter-Medium',
-    color: '#800000',
+    color: '#228B22',
   },
   loginButton: {
-    backgroundColor: '#800000',
+    backgroundColor: '#228B22',
     paddingVertical: 16,
     borderRadius: 8,
     alignItems: 'center',
@@ -206,6 +206,6 @@ const styles = StyleSheet.create({
   signUpButtonText: {
     fontSize: 14,
     fontFamily: 'Inter-Medium',
-    color: '#800000',
+    color: '#228B22',
   },
 });

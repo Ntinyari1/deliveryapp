@@ -144,7 +144,7 @@ export default function DeliveryHistory() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#800000', '#B22222']}
+        colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -165,6 +165,7 @@ export default function DeliveryHistory() {
           </View>
           <TouchableOpacity style={styles.filterButton}>
             <Filter color="#FF8C00" size={20} />
+          <Filter color="#32CD32" size={20} />
           </TouchableOpacity>
         </View>
 
@@ -290,12 +291,12 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   filterChipActive: {
-    backgroundColor: '#FF8C00',
+    backgroundColor: '#32CD32',
   },
   filterChipText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#FF8C00',
+    color: '#32CD32',
   },
   filterChipTextActive: {
     color: '#ffffff',
@@ -335,7 +336,7 @@ const styles = StyleSheet.create({
   locationText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#FF8C00',
+    color: '#32CD32',
     flex: 1,
   },
   routeArrow: {
@@ -373,7 +374,7 @@ const styles = StyleSheet.create({
   riderName: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#FF8C00',
+    color: '#32CD32',
   },
   deliveryFooter: {
     flexDirection: 'row',
@@ -386,7 +387,7 @@ const styles = StyleSheet.create({
   amountText: {
     fontSize: 18,
     fontFamily: 'Inter-Bold',
-    color: '#FF8C00',
+    color: '#32CD32',
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -396,6 +397,6 @@ const styles = StyleSheet.create({
   ratingText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#FF8C00',
+    color: '#32CD32',
   },
 });

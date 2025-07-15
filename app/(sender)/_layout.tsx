@@ -31,6 +31,7 @@ export default function SenderLayout() {
           marginTop: 5,
         },
         tabBarActiveTintColor: '#800000',
+        tabBarActiveTintColor: '#228B22',
         tabBarInactiveTintColor: '#999999',
         tabBarIconStyle: {
           marginBottom: 2,

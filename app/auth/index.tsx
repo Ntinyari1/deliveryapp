@@ -14,7 +14,7 @@ export default function AuthIndex() {
 
   return (
     <LinearGradient
-      colors={['#800000', '#B22222']}
+      colors={['#228B22', '#32CD32']}
       style={styles.container}
     >
       <View style={styles.content}>
@@ -155,6 +155,6 @@ const styles = StyleSheet.create({
   getStartedButtonText: {
     fontSize: 18,
     fontFamily: 'Inter-SemiBold',
-    color: '#800000',
+    color: '#228B22',
   },
 });

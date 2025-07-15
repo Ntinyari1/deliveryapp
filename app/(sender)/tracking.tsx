@@ -47,7 +47,7 @@ export default function DeliveryTracking() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#8B7D6B', '#A0826D']}
+        colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -62,6 +62,7 @@ export default function DeliveryTracking() {
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.mapPlaceholder}>
           <MapPin color="#FF8C00" size={28} />
+        <MapPin color="#32CD32" size={28} />
           <Text style={styles.mapText}>Live Map View</Text>
           <Text style={styles.mapSubtext}>Rider location and route</Text>
         </View>
@@ -70,6 +71,7 @@ export default function DeliveryTracking() {
           <View style={styles.statusHeader}>
             <View style={styles.statusIcon}>
               <Navigation color="#FF8C00" size={18} />
+            <Navigation color="#32CD32" size={18} />
             </View>
             <View style={styles.statusInfo}>
               <Text style={styles.statusTitle}>
@@ -123,9 +125,11 @@ export default function DeliveryTracking() {
             <View style={styles.riderActions}>
               <TouchableOpacity style={styles.actionButton}>
                 <Phone color="#FF8C00" size={16} />
+              <Phone color="#32CD32" size={16} />
               </TouchableOpacity>
               <TouchableOpacity style={styles.actionButton}>
                 <MessageCircle color="#FF8C00" size={16} />
+              <MessageCircle color="#32CD32" size={16} />
               </TouchableOpacity>
             </View>
           </View>
@@ -278,7 +282,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   progressDotActive: {
-    backgroundColor: '#FF8C00',
+    backgroundColor: '#32CD32',
   },
   progressDotInactive: {
     backgroundColor: '#E0E0E0',
@@ -309,7 +313,7 @@ const styles = StyleSheet.create({
     height: 16,
   },
   progressLineActive: {
-    backgroundColor: '#FF8C00',
+    backgroundColor: '#32CD32',
   },
   progressLineInactive: {
     backgroundColor: '#E0E0E0',

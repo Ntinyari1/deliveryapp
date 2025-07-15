@@ -14,7 +14,7 @@ export default function RoleSelection() {
 
   return (
     <LinearGradient
-      colors={['#8B7D6B', '#A0826D']}
+      colors={['#228B22', '#32CD32']}
       style={styles.container}
     >
       <View style={styles.header}>

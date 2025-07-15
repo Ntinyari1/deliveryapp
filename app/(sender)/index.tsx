@@ -47,7 +47,7 @@ export default function SenderHome() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#800000', '#B22222']}
+        colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#800000',
+    color: '#228B22',
     marginBottom: 20,
   },
   sectionHeader: {
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   viewAllText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#800000',
+    color: '#228B22',
   },
   statsGrid: {
     flexDirection: 'row',
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 28,
     fontFamily: 'Inter-Bold',
-    color: '#800000',
+    color: '#228B22',
     marginBottom: 8,
   },
   statLabel: {
@@ -287,12 +287,12 @@ const styles = StyleSheet.create({
   routeText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#800000',
+    color: '#228B22',
   },
   amountText: {
     fontSize: 16,
     fontFamily: 'Inter-Bold',
-    color: '#800000',
+    color: '#228B22',
   },
   deliveryFooter: {
     flexDirection: 'row',

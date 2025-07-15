@@ -22,7 +22,7 @@ export default function WalletPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#800000', '#B22222']}
+        colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -39,6 +39,7 @@ export default function WalletPage() {
         <View style={styles.balanceCard}>
           <View style={styles.balanceHeader}>
             <Wallet color="#FF8C00" size={28} />
+          <Wallet color="#32CD32" size={28} />
             <Text style={styles.balanceTitle}>Current Balance</Text>
           </View>
           <Text style={styles.balanceAmount}>KSh {balance.toLocaleString()}</Text>
@@ -54,6 +55,7 @@ export default function WalletPage() {
             <Text style={styles.sectionTitle}>Payment Methods</Text>
             <TouchableOpacity>
               <Plus color="#FF8C00" size={24} />
+            <Plus color="#32CD32" size={24} />
             </TouchableOpacity>
           </View>
 
@@ -79,6 +81,7 @@ export default function WalletPage() {
             <Text style={styles.sectionTitle}>Recent Transactions</Text>
             <TouchableOpacity>
               <History color="#FF8C00" size={24} />
+            <History color="#32CD32" size={24} />
             </TouchableOpacity>
           </View>
 
@@ -164,7 +167,7 @@ const styles = StyleSheet.create({
   balanceAmount: {
     fontSize: 36,
     fontFamily: 'Inter-Bold',
-    color: '#B8860B',
+    color: '#228B22',
     marginBottom: 20,
   },
   topUpButton: {
@@ -178,7 +181,7 @@ const styles = StyleSheet.create({
   topUpText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#B8860B',
+    color: '#228B22',
     marginLeft: 8,
   },
   section: {

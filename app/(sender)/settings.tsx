@@ -63,7 +63,7 @@ export default function SettingsPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#800000', '#B22222']}
+        colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -92,7 +92,7 @@ export default function SettingsPage() {
                 <Switch
                   value={settings[item.key as keyof typeof settings] as boolean}
                   onValueChange={() => toggleSetting(item.key)}
-                  trackColor={{ false: '#E0E0E0', true: '#FFD700' }}
+                  trackColor={{ false: '#E0E0E0', true: '#32CD32' }}
                   thumbColor={settings[item.key as keyof typeof settings] ? '#ffffff' : '#f4f3f4'}
                 />
               </View>

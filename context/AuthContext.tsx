@@ -36,7 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
     
     setTimeout(() => {
-      setUser(demoUser);
+      setUser(null); // Start with no user to show auth flow
       setIsLoading(false);
     }, 1000);
   }, []);

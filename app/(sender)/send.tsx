@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MapPin, Package, Clock, ArrowLeft, Plus } from 'lucide-react-native';
 
 export default function SendPackage() {
   const router = useRouter();
+  const params = useLocalSearchParams();
   const [formData, setFormData] = useState({
     pickupLocation: '',
     dropoffLocation: '',
@@ -15,6 +17,15 @@ export default function SendPackage() {
     specialInstructions: '',
   });
 
+  useEffect(() => {
+    // Update dropoff location if destination was selected
+    if (params.destination) {
+      setFormData(prev => ({
+        ...prev,
+        dropoffLocation: `${params.destination}, ${params.destinationArea}`,
+      }));
+    }
+  }, [params]);
   const parcelTypes = ['Document', 'Small Package', 'Fragile Item', 'Electronics', 'Other'];
   const sizes = ['Small', 'Medium', 'Large'];
   const estimatedPrice = 'KSh 350';
@@ -37,7 +48,7 @@ export default function SendPackage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#8B7D6B', '#A0826D']}
+        colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
@@ -80,15 +91,21 @@ export default function SendPackage() {
             <View style={styles.inputContainer}>
               <View style={styles.inputHeader}>
                 <MapPin color="#FF6347" size={20} />
+              <MapPin color="#32CD32" size={20} />
                 <Text style={styles.inputLabel}>Drop-off Location</Text>
               </View>
-              <TextInput
-                style={styles.textInput}
-                value={formData.dropoffLocation}
-                onChangeText={(value) => handleInputChange('dropoffLocation', value)}
-                placeholder="Enter drop-off address"
-                placeholderTextColor="#999999"
-              />
+              <TouchableOpacity
+                style={styles.destinationButton}
+                onPress={() => router.push('/(sender)/destination-picker')}
+              >
+                <Text style={[
+                  styles.destinationButtonText,
+                  formData.dropoffLocation ? styles.destinationSelected : styles.destinationPlaceholder
+                ]}>
+                  {formData.dropoffLocation || 'Select destination'}
+                </Text>
+                <Plus color="#32CD32" size={20} />
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -277,7 +294,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontFamily: 'Inter-Bold',
-    color: '#800000',
+    color: '#228B22',
     marginBottom: 20,
   },
   locationCard: {
@@ -301,7 +318,7 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#800000',
+    color: '#228B22',
     marginLeft: 10,
   },
   textInput: {
@@ -311,7 +328,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     fontSize: 16,
     fontFamily: 'Inter-Regular',
-    color: '#800000',
+    color: '#228B22',
     borderWidth: 1,
     borderColor: '#e9ecef',
   },
@@ -323,6 +340,28 @@ const styles = StyleSheet.create({
     width: 2,
     height: 30,
     backgroundColor: '#dee2e6',
+  },
+  destinationButton: {
+    backgroundColor: '#f8f9fa',
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    borderWidth: 1,
+    borderColor: '#e9ecef',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  destinationButtonText: {
+    fontSize: 16,
+    fontFamily: 'Inter-Regular',
+    flex: 1,
+  },
+  destinationSelected: {
+    color: '#228B22',
+  },
+  destinationPlaceholder: {
+    color: '#999999',
   },
   card: {
     backgroundColor: '#ffffff',
@@ -338,7 +377,7 @@ const styles = StyleSheet.create({
   cardSubtitle: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#800000',
+    color: '#228B22',
     marginBottom: 15,
   },
   optionsGrid: {
@@ -361,7 +400,7 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 14,
     fontFamily: 'Inter-SemiBold',
-    color: '#800000',
+    color: '#228B22',
   },
   optionTextSelected: {
     color: '#ffffff',
@@ -385,7 +424,7 @@ const styles = StyleSheet.create({
   timeOptionText: {
     fontSize: 16,
     fontFamily: 'Inter-SemiBold',
-    color: '#800000',
+    color: '#228B22',
     marginLeft: 12,
   },
   timeOptionTextSelected: {
@@ -398,7 +437,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     fontSize: 16,
     fontFamily: 'Inter-Regular',
-    color: '#800000',
+    color: '#228B22',
     borderWidth: 1,
     borderColor: '#e9ecef',
     minHeight: 100,
@@ -425,12 +464,12 @@ const styles = StyleSheet.create({
   priceLabel: {
     fontSize: 18,
     fontFamily: 'Inter-SemiBold',
-    color: '#800000',
+    color: '#228B22',
   },
   priceAmount: {
     fontSize: 24,
     fontFamily: 'Inter-Bold',
-    color: '#FFD700',
+    color: '#32CD32',
   },
   priceNote: {
     fontSize: 14,

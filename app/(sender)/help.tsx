@@ -58,7 +58,7 @@ export default function HelpPage() {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#800000', '#B22222']}
+        colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
