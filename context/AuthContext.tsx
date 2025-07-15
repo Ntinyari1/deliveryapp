@@ -50,8 +50,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(userData);
   };
 
-  const logout = () => {
+  const logout = async () => {
+    // Clear any stored auth tokens or data
     setUser(null);
+    setIsLoading(false);
   };
 
   return (

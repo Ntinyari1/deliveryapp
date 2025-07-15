@@ -76,11 +76,7 @@ export default function SenderProfile() {
   };
 
   const handleEditProfile = () => {
-    Alert.alert(
-      'Edit Profile',
-      'Opening profile editor...',
-      [{ text: 'OK' }]
-    );
+    router.push('/(sender)/edit-profile');
   };
 
   return (
@@ -109,8 +105,8 @@ export default function SenderProfile() {
               <Edit color="#2E8B57" size={18} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.userName}>{user?.name || 'John Doe'}</Text>
-          <Text style={styles.userEmail}>{user?.email || 'john@example.com'}</Text>
+          <Text style={styles.userName}>{user?.name || 'Sender Name'}</Text>
+          <Text style={styles.userEmail}>{user?.email || 'sender@example.com'}</Text>
         </View>
       </LinearGradient>
 
