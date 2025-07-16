@@ -25,6 +25,7 @@ export default function SendPackage() {
       }));
     }
   }, [params]);
+
   const parcelTypes = ['Document', 'Small Package', 'Fragile Item', 'Electronics', 'Other'];
   const sizes = ['Small', 'Medium', 'Large'];
   const estimatedPrice = 'KSh 350';
@@ -37,466 +38,258 @@ export default function SendPackage() {
   };
 
   const handleSubmit = () => {
+    // Add your form validation and submission logic here
     if (!formData.pickupLocation || !formData.dropoffLocation || !formData.parcelType || !formData.size) {
-      Alert.alert('Missing Information', 'Please fill in all required fields to continue');
+      Alert.alert('Please fill in all required fields.');
       return;
     }
-    router.push('/(sender)/matching');
+    // Simulate successful submission
+    Alert.alert('Success', 'Your package has been scheduled!');
+    router.push('/(sender)/history');
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <LinearGradient
         colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-            <ArrowLeft color="#ffffff" size={24} />
+            <ArrowLeft color="#fff" size={22} />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Send Package</Text>
-          <Text style={styles.headerSubtitle}>Fill in delivery details</Text>
+          <Text style={styles.headerTitle}>Send a Package</Text>
         </View>
       </LinearGradient>
 
-      <ScrollView 
-        style={styles.scrollContent} 
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContainer}
-      >
-        {/* Location Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>📍 Pickup & Drop-off</Text>
+      <View style={styles.content}>
+        <Text style={styles.label}>Pickup Location</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter pickup location"
+          value={formData.pickupLocation}
+          onChangeText={text => handleInputChange('pickupLocation', text)}
+        />
 
-          <View style={styles.locationCard}>
-            <View style={styles.inputContainer}>
-              <View style={styles.inputHeader}>
-                <MapPin color="#32CD32" size={20} />
-                <Text style={styles.inputLabel}>Pickup Location</Text>
-              </View>
-              <TextInput
-                style={styles.textInput}
-                value={formData.pickupLocation}
-                onChangeText={(value) => handleInputChange('pickupLocation', value)}
-                placeholder="Enter pickup address"
-                placeholderTextColor="#999999"
-              />
-            </View>
+        <Text style={styles.label}>Dropoff Location</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter dropoff location"
+          value={formData.dropoffLocation}
+          onChangeText={text => handleInputChange('dropoffLocation', text)}
+        />
 
-            <View style={styles.routeDivider}>
-              <View style={styles.routeLine} />
-            </View>
-
-            <View style={styles.inputContainer}>
-              <View style={styles.inputHeader}>
-                <MapPin color="#FF6347" size={20} />
-              <MapPin color="#32CD32" size={20} />
-                <Text style={styles.inputLabel}>Drop-off Location</Text>
-              </View>
-              <TouchableOpacity
-                style={styles.destinationButton}
-                onPress={() => router.push('/(sender)/destination-picker')}
-              >
-                <Text style={[
-                  styles.destinationButtonText,
-                  formData.dropoffLocation ? styles.destinationSelected : styles.destinationPlaceholder
-                ]}>
-                  {formData.dropoffLocation || 'Select destination'}
-                </Text>
-                <Plus color="#32CD32" size={20} />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-
-        {/* Package Details */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>📦 Package Details</Text>
-
-          <View style={styles.card}>
-            <Text style={styles.cardSubtitle}>What are you sending?</Text>
-            <View style={styles.optionsGrid}>
-              {parcelTypes.map((type) => (
-                <TouchableOpacity
-                  key={type}
-                  style={[
-                    styles.optionChip,
-                    formData.parcelType === type && styles.optionChipSelected
-                  ]}
-                  onPress={() => handleInputChange('parcelType', type)}
-                  activeOpacity={0.8}
-                >
-                  <Text style={[
-                    styles.optionText,
-                    formData.parcelType === type && styles.optionTextSelected
-                  ]}>
-                    {type}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-
-          <View style={styles.card}>
-            <Text style={styles.cardSubtitle}>Package Size</Text>
-            <View style={styles.optionsGrid}>
-              {sizes.map((size) => (
-                <TouchableOpacity
-                  key={size}
-                  style={[
-                    styles.optionChip,
-                    formData.size === size && styles.optionChipSelected
-                  ]}
-                  onPress={() => handleInputChange('size', size)}
-                  activeOpacity={0.8}
-                >
-                  <Text style={[
-                    styles.optionText,
-                    formData.size === size && styles.optionTextSelected
-                  ]}>
-                    {size}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-        </View>
-
-        {/* Pickup Time */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>⏰ Pickup Time</Text>
-
-          <View style={styles.card}>
-            <View style={styles.timeOptions}>
-              <TouchableOpacity
+        <Text style={styles.label}>Parcel Type</Text>
+        <View style={styles.chipGroup}>
+          {parcelTypes.map(type => (
+            <TouchableOpacity
+              key={type}
+              style={[
+                styles.chip,
+                formData.parcelType === type && styles.chipSelected,
+              ]}
+              onPress={() => handleInputChange('parcelType', type)}
+            >
+              <Text
                 style={[
-                  styles.timeOption,
-                  formData.pickupTime === 'immediate' && styles.timeOptionSelected
+                  styles.chipText,
+                  formData.parcelType === type && styles.chipTextSelected,
                 ]}
-                onPress={() => handleInputChange('pickupTime', 'immediate')}
-                activeOpacity={0.8}
               >
-                <Clock color={formData.pickupTime === 'immediate' ? '#ffffff' : '#FFD700'} size={20} />
-                <Text style={[
-                  styles.timeOptionText,
-                  formData.pickupTime === 'immediate' && styles.timeOptionTextSelected
-                ]}>
-                  Immediate Pickup
-                </Text>
-              </TouchableOpacity>
+                {type}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
 
-              <TouchableOpacity
+        <Text style={styles.label}>Size</Text>
+        <View style={styles.chipGroup}>
+          {sizes.map(size => (
+            <TouchableOpacity
+              key={size}
+              style={[
+                styles.chip,
+                formData.size === size && styles.chipSelected,
+              ]}
+              onPress={() => handleInputChange('size', size)}
+            >
+              <Text
                 style={[
-                  styles.timeOption,
-                  formData.pickupTime === 'scheduled' && styles.timeOptionSelected
+                  styles.chipText,
+                  formData.size === size && styles.chipTextSelected,
                 ]}
-                onPress={() => handleInputChange('pickupTime', 'scheduled')}
-                activeOpacity={0.8}
               >
-                <Clock color={formData.pickupTime === 'scheduled' ? '#ffffff' : '#FFD700'} size={20} />
-                <Text style={[
-                  styles.timeOptionText,
-                  formData.pickupTime === 'scheduled' && styles.timeOptionTextSelected
-                ]}>
-                  Schedule Later
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+                {size}
+              </Text>
+            </TouchableOpacity>
+          ))}
         </View>
 
-        {/* Special Instructions */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>📝 Special Instructions</Text>
-
-          <View style={styles.card}>
-            <TextInput
-              style={styles.textArea}
-              value={formData.specialInstructions}
-              onChangeText={(value) => handleInputChange('specialInstructions', value)}
-              placeholder="Any special handling instructions... (Optional)"
-              placeholderTextColor="#999999"
-              multiline
-              numberOfLines={4}
-              textAlignVertical="top"
-            />
-          </View>
-        </View>
-
-        {/* Price Summary */}
-        <View style={styles.priceCard}>
-          <View style={styles.priceHeader}>
-            <Text style={styles.priceLabel}>Estimated Price</Text>
-            <Text style={styles.priceAmount}>{estimatedPrice}</Text>
-          </View>
-          <Text style={styles.priceNote}>Final price may vary based on distance and package details</Text>
-        </View>
-
-        {/* Submit Button */}
-        <TouchableOpacity 
-          style={styles.submitButton} 
-          onPress={handleSubmit}
-          activeOpacity={0.9}
-        >
-          <LinearGradient
-            colors={['#FFD700', '#DAA520']}
-            style={styles.submitGradient}
+        <Text style={styles.label}>Pickup Time</Text>
+        <View style={styles.chipGroup}>
+          <TouchableOpacity
+            style={[
+              styles.chip,
+              formData.pickupTime === 'immediate' && styles.chipSelected,
+            ]}
+            onPress={() => handleInputChange('pickupTime', 'immediate')}
           >
-            <Text style={styles.submitText}>Find a Rider</Text>
-            <Package color="#ffffff" size={20} />
-          </LinearGradient>
+            <Text
+              style={[
+                styles.chipText,
+                formData.pickupTime === 'immediate' && styles.chipTextSelected,
+              ]}
+            >
+              Immediate
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.chip,
+              formData.pickupTime === 'schedule' && styles.chipSelected,
+            ]}
+            onPress={() => handleInputChange('pickupTime', 'schedule')}
+          >
+            <Text
+              style={[
+                styles.chipText,
+                formData.pickupTime === 'schedule' && styles.chipTextSelected,
+              ]}
+            >
+              Schedule
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.label}>Special Instructions</Text>
+        <TextInput
+          style={[styles.input, { height: 60 }]}
+          placeholder="Any special instructions?"
+          value={formData.specialInstructions}
+          onChangeText={text => handleInputChange('specialInstructions', text)}
+          multiline
+        />
+
+        <View style={styles.estimateContainer}>
+          <Package color="#228B22" size={20} />
+          <Text style={styles.estimateText}>Estimated Price: {estimatedPrice}</Text>
+        </View>
+
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={handleSubmit}
+          activeOpacity={0.8}
+        >
+          <Plus color="#fff" size={20} />
+          <Text style={styles.submitButtonText}>Send Package</Text>
         </TouchableOpacity>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#f5f5f5',
   },
   header: {
-    paddingTop: 70,
-    paddingBottom: 30,
+    paddingTop: 20,         // Reduced from 70
+    paddingBottom: 20,      // Reduced from 50
     paddingHorizontal: 25,
   },
   headerContent: {
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 0,           // Reduced
   },
   backButton: {
-    marginBottom: 20,
-    padding: 5,
+    marginRight: 10,
+    padding: 6,
+    borderRadius: 20,
   },
   headerTitle: {
-    fontSize: 28,
-    fontFamily: 'Inter-Bold',
-    color: '#ffffff',
-    marginBottom: 8,
+    fontSize: 24,           // Reduced
+    fontWeight: 'bold',
+    color: '#fff',
   },
-  headerSubtitle: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
-    color: 'rgba(255, 255, 255, 0.8)',
-  },
-  scrollContent: {
+  content: {
     flex: 1,
-  },
-  scrollContainer: {
     paddingHorizontal: 25,
-    paddingTop: 30,
-    paddingBottom: 140,
+    paddingTop: 20,
+    paddingBottom: 100,
   },
-  section: {
-    marginBottom: 30,
+  label: {
+    fontSize: 18,
+    color: '#1a1a1a',
+    fontWeight: 'bold',
+    marginTop: 18,
+    marginBottom: 6,
   },
-  sectionTitle: {
-    fontSize: 20,
-    fontFamily: 'Inter-Bold',
-    color: '#228B22',
-    marginBottom: 20,
-  },
-  locationCard: {
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
-    padding: 25,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-  },
-  inputContainer: {
-    marginBottom: 5,
-  },
-  inputHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  inputLabel: {
+  input: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 14,
     fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#228B22',
-    marginLeft: 10,
-  },
-  textInput: {
-    backgroundColor: '#f8f9fa',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
-    color: '#228B22',
+    marginBottom: 8,
     borderWidth: 1,
-    borderColor: '#e9ecef',
+    borderColor: '#e0e0e0',
   },
-  routeDivider: {
-    alignItems: 'center',
-    marginVertical: 15,
-  },
-  routeLine: {
-    width: 2,
-    height: 30,
-    backgroundColor: '#dee2e6',
-  },
-  destinationButton: {
-    backgroundColor: '#f8f9fa',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    borderWidth: 1,
-    borderColor: '#e9ecef',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  destinationButtonText: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
-    flex: 1,
-  },
-  destinationSelected: {
-    color: '#228B22',
-  },
-  destinationPlaceholder: {
-    color: '#999999',
-  },
-  card: {
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
-    padding: 25,
-    marginBottom: 15,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-  },
-  cardSubtitle: {
-    fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#228B22',
-    marginBottom: 15,
-  },
-  optionsGrid: {
+  chipGroup: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 10,
+    marginBottom: 8,
   },
-  optionChip: {
-    backgroundColor: '#f8f9fa',
-    borderRadius: 25,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderWidth: 2,
-    borderColor: '#e9ecef',
+  chip: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 18,
+    marginRight: 10,
+    marginBottom: 8,
   },
-  optionChipSelected: {
-    backgroundColor: '#FFD700',
-    borderColor: '#FFD700',
+  chipSelected: {
+    backgroundColor: '#228B22',
   },
-  optionText: {
-    fontSize: 14,
-    fontFamily: 'Inter-SemiBold',
-    color: '#228B22',
+  chipText: {
+    color: '#1a1a1a',
+    fontSize: 15,
   },
-  optionTextSelected: {
-    color: '#ffffff',
+  chipTextSelected: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
-  timeOptions: {
-    gap: 15,
-  },
-  timeOption: {
+  estimateContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f8f9fa',
-    borderRadius: 15,
-    padding: 20,
-    borderWidth: 2,
-    borderColor: '#e9ecef',
+    marginTop: 18,
+    marginBottom: 18,
   },
-  timeOptionSelected: {
-    backgroundColor: '#FFD700',
-    borderColor: '#FFD700',
-  },
-  timeOptionText: {
-    fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#228B22',
-    marginLeft: 12,
-  },
-  timeOptionTextSelected: {
-    color: '#ffffff',
-  },
-  textArea: {
-    backgroundColor: '#f8f9fa',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
-    color: '#228B22',
-    borderWidth: 1,
-    borderColor: '#e9ecef',
-    minHeight: 100,
-  },
-  priceCard: {
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
-    padding: 25,
-    marginBottom: 30,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    borderWidth: 2,
-    borderColor: '#FFD700',
-  },
-  priceHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  priceLabel: {
+  estimateText: {
+    marginLeft: 8,
     fontSize: 18,
-    fontFamily: 'Inter-SemiBold',
     color: '#228B22',
-  },
-  priceAmount: {
-    fontSize: 24,
-    fontFamily: 'Inter-Bold',
-    color: '#32CD32',
-  },
-  priceNote: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#666666',
-    textAlign: 'center',
+    fontWeight: 'bold',
   },
   submitButton: {
-    borderRadius: 20,
-    elevation: 6,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
-    marginBottom: 20,
-  },
-  submitGradient: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 30,
-    borderRadius: 20,
-    gap: 12,
+    backgroundColor: '#228B22',
+    borderRadius: 22,
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    alignSelf: 'center',
+    marginTop: 10,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.10,
+    shadowRadius: 4,
   },
-  submitText: {
+  submitButtonText: {
+    color: '#fff',
     fontSize: 18,
-    fontFamily: 'Inter-Bold',
-    color: '#ffffff',
+    fontWeight: 'bold',
+    marginLeft: 10,
   },
 });

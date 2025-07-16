@@ -45,153 +45,114 @@ export default function SenderHome() {
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <LinearGradient
         colors={['#228B22', '#32CD32']}
         style={styles.header}
       >
         <View style={styles.headerContent}>
-          <Text style={styles.greeting}>Good morning,</Text>
+          <Text style={styles.greeting}>Hello,</Text>
           <Text style={styles.userName}>{user?.name || 'User'}</Text>
           <Text style={styles.subtitle}>Ready to send a package?</Text>
         </View>
       </LinearGradient>
 
-      <ScrollView 
-        style={styles.scrollContent} 
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContainer}
-      >
-        {/* Stats Grid */}
-        <View style={styles.statsSection}>
-          <Text style={styles.sectionTitle}>📊 Your Overview</Text>
+      <View style={styles.content}>
+        {/* Stats Section */}
+        <View style={styles.statsContainer}>
+          <Text style={styles.sectionTitle}>Your Statistics</Text>
           <View style={styles.statsGrid}>
-            {stats.map((stat, index) => (
-              <TouchableOpacity key={index} style={styles.statCard} activeOpacity={0.8}>
-                <View style={[styles.statIconContainer, { backgroundColor: stat.color + '15' }]}>
-                  <stat.icon color={stat.color} size={28} />
+            {stats.map((stat, idx) => (
+              <View key={idx} style={styles.statCard}>
+                <View style={[styles.statIcon, { backgroundColor: stat.color + '15' }]}>
+                  <stat.icon color={stat.color} size={24} />
                 </View>
                 <Text style={styles.statValue}>{stat.value}</Text>
                 <Text style={styles.statLabel}>{stat.label}</Text>
-              </TouchableOpacity>
+              </View>
             ))}
           </View>
         </View>
 
-        {/* Send Package Button */}
-        <TouchableOpacity
-          style={styles.sendPackageButton}
-          onPress={() => router.push('/(sender)/destination-picker')}
-          activeOpacity={0.9}
-        >
-          <LinearGradient
-            colors={['#FFD700', '#DAA520']}
-            style={styles.sendButtonGradient}
-          >
-            <Plus color="#ffffff" size={24} />
-            <Text style={styles.sendButtonText}>Find a Rider</Text>
-            <ArrowRight color="#ffffff" size={20} />
-          </LinearGradient>
-        </TouchableOpacity>
-
-        {/* Recent Deliveries */}
-        <View style={styles.deliveriesSection}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>📦 Recent Deliveries</Text>
+        {/* Recent Deliveries Section */}
+        <View style={styles.recentContainer}>
+          <View style={styles.recentHeader}>
+            <Text style={styles.sectionTitle}>Recent Deliveries</Text>
             <TouchableOpacity onPress={() => router.push('/(sender)/history')}>
-              <Text style={styles.viewAllText}>View All</Text>
+              <Text style={styles.seeAllText}>See All</Text>
             </TouchableOpacity>
           </View>
-          
           {recentDeliveries.map((delivery) => (
-            <TouchableOpacity key={delivery.id} style={styles.deliveryCard} activeOpacity={0.8}>
-              <View style={styles.deliveryHeader}>
-                <View style={styles.routeContainer}>
-                  <Text style={styles.routeText}>{delivery.from}</Text>
-                  <ArrowRight color="#999999" size={16} />
-                  <Text style={styles.routeText}>{delivery.to}</Text>
-                </View>
-                <Text style={styles.amountText}>{delivery.amount}</Text>
+            <View key={delivery.id} style={styles.deliveryCard}>
+              <View style={styles.deliveryInfo}>
+                <Text style={styles.deliveryRoute}>{delivery.from} → {delivery.to}</Text>
+                <Text style={styles.deliveryStatus}>{delivery.status}</Text>
               </View>
-              
-              <View style={styles.deliveryFooter}>
-                <View style={[
-                  styles.statusBadge,
-                  delivery.status === 'Delivered' ? styles.statusDelivered : styles.statusInTransit
-                ]}>
-                  <Text style={[
-                    styles.statusText,
-                    delivery.status === 'Delivered' ? styles.statusDeliveredText : styles.statusInTransitText
-                  ]}>
-                    {delivery.status}
-                  </Text>
-                </View>
-                <Text style={styles.dateText}>{delivery.date}</Text>
+              <View style={styles.deliveryMeta}>
+                <Text style={styles.deliveryDate}>{delivery.date}</Text>
+                <Text style={styles.deliveryAmount}>{delivery.amount}</Text>
               </View>
-            </TouchableOpacity>
+            </View>
           ))}
         </View>
-      </ScrollView>
-    </View>
+
+        {/* New Delivery Button */}
+        <TouchableOpacity
+          style={styles.newDeliveryButton}
+          onPress={() => router.push('/(sender)/send')}
+          activeOpacity={0.8}
+        >
+          <Plus color="#fff" size={22} />
+          <Text style={styles.newDeliveryText}>New Delivery</Text>
+          <ArrowRight color="#fff" size={20} />
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#f5f5f5',
   },
   header: {
-    paddingTop: 70,
-    paddingBottom: 40,
+    paddingTop: 20,         // Reduced from 70
+    paddingBottom: 20,      // Reduced from 50
     paddingHorizontal: 25,
   },
   headerContent: {
-    alignItems: 'flex-start',
+    marginTop: 0,           // Reduced from 30 or more
   },
   greeting: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
-    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: 18,           // Reduced
+    color: '#fff',
+    marginBottom: 2,
   },
   userName: {
-    fontSize: 28,
-    fontFamily: 'Inter-Bold',
-    color: '#ffffff',
-    marginBottom: 8,
+    fontSize: 25,           // Reduced
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 2,
   },
   subtitle: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
-    color: 'rgba(255, 255, 255, 0.8)',
+    fontSize: 18,           // Reduced
+    color: '#e0e0e0',
   },
-  scrollContent: {
+  content: {
     flex: 1,
-  },
-  scrollContainer: {
     paddingHorizontal: 25,
-    paddingTop: 30,
-    paddingBottom: 120, // Space for tab bar
+    paddingTop: 20,
+    paddingBottom: 40,
   },
-  statsSection: {
-    marginBottom: 35,
+  statsContainer: {
+    marginBottom: 30,
   },
   sectionTitle: {
-    fontSize: 20,
-    fontFamily: 'Inter-Bold',
-    color: '#228B22',
-    marginBottom: 20,
-  },
-  sectionHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  viewAllText: {
-    fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#228B22',
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#1a1a1a',
+    marginBottom: 18,
   },
   statsGrid: {
     flexDirection: 'row',
@@ -199,130 +160,111 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   statCard: {
-    width: (width - 70) / 2,
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
-    padding: 25,
-    marginBottom: 20,
+    backgroundColor: '#fff',
+    borderRadius: 14,
+    padding: 16,
+    width: width / 2 - 32,
     alignItems: 'center',
-    elevation: 4,
+    marginBottom: 16,
+    elevation: 2,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    minHeight: 140,
-    justifyContent: 'center',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.08,
+    shadowRadius: 2,
   },
-  statIconContainer: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+  statIcon: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 15,
-  },
-  statValue: {
-    fontSize: 28,
-    fontFamily: 'Inter-Bold',
-    color: '#228B22',
     marginBottom: 8,
   },
+  statValue: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#1a1a1a',
+    marginBottom: 2,
+  },
   statLabel: {
-    fontSize: 14,
-    fontFamily: 'Inter-Medium',
-    color: '#666666',
+    fontSize: 16,
+    color: '#666',
     textAlign: 'center',
   },
-  sendPackageButton: {
-    marginBottom: 35,
-    borderRadius: 20,
-    elevation: 6,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
+  recentContainer: {
+    marginBottom: 30,
   },
-  sendButtonGradient: {
+  recentHeader: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 30,
-    borderRadius: 20,
-    gap: 12,
+    marginBottom: 12,
   },
-  sendButtonText: {
-    fontSize: 18,
-    fontFamily: 'Inter-Bold',
-    color: '#ffffff',
-    flex: 1,
-    textAlign: 'center',
-  },
-  deliveriesSection: {
-    marginBottom: 40,
+  seeAllText: {
+    fontSize: 16,
+    color: '#228B22',
+    fontWeight: 'bold',
   },
   deliveryCard: {
-    backgroundColor: '#ffffff',
-    borderRadius: 18,
-    padding: 20,
-    marginBottom: 15,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  deliveryHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  routeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
-    gap: 8,
-  },
-  routeText: {
-    fontSize: 16,
-    fontFamily: 'Inter-SemiBold',
-    color: '#228B22',
-  },
-  amountText: {
-    fontSize: 16,
-    fontFamily: 'Inter-Bold',
-    color: '#228B22',
-  },
-  deliveryFooter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  statusBadge: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    backgroundColor: '#fff',
     borderRadius: 12,
+    padding: 16,
+    marginBottom: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.06,
+    shadowRadius: 1,
   },
-  statusDelivered: {
-    backgroundColor: 'rgba(50, 205, 50, 0.15)',
+  deliveryInfo: {
+    flex: 2,
   },
-  statusInTransit: {
-    backgroundColor: 'rgba(255, 215, 0, 0.15)',
+  deliveryRoute: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1a1a1a',
+    marginBottom: 2,
   },
-  statusText: {
-    fontSize: 13,
-    fontFamily: 'Inter-SemiBold',
-  },
-  statusDeliveredText: {
+  deliveryStatus: {
+    fontSize: 15,
     color: '#32CD32',
   },
-  statusInTransitText: {
-    color: '#FFD700',
+  deliveryMeta: {
+    flex: 1,
+    alignItems: 'flex-end',
   },
-  dateText: {
+  deliveryDate: {
     fontSize: 14,
-    fontFamily: 'Inter-Regular',
-    color: '#666666',
+    color: '#888',
+    marginBottom: 2,
+  },
+  deliveryAmount: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#228B22',
+  },
+  newDeliveryButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#228B22',
+    borderRadius: 22,
+    paddingVertical: 14,
+    paddingHorizontal: 28,
+    alignSelf: 'center',
+    marginTop: 10,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.10,
+    shadowRadius: 4,
+  },
+  newDeliveryText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginHorizontal: 10,
   },
 });

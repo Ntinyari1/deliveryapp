@@ -25,33 +25,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate checking for stored auth token
-    // For demo purposes, let's set a default user
-    const demoUser: User = {
-      id: 'demo-user',
-      name: 'John Doe',
-      email: 'john@example.com',
-      phone: '+254712345678',
-      role: 'sender',
-      isApproved: true,
-    };
-    
+    // Here you would check for a stored auth token and fetch user data if available
     setTimeout(() => {
-      setUser(null); // Start with no user to show auth flow
+      setUser(null); // No user by default
       setIsLoading(false);
     }, 1000);
   }, []);
 
+  const deriveNameFromEmail = (email: string): string => {
+    const namePart = email.split('@')[0];
+    return namePart.charAt(0).toUpperCase() + namePart.slice(1);
+  };
+
   const login = (userData: User) => {
+    // If name is missing, derive from email
+    if (!userData.name || userData.name.trim() === '') {
+      userData.name = deriveNameFromEmail(userData.email);
+    }
     setUser(userData);
   };
 
   const updateUser = (userData: User) => {
+    if (!userData.name || userData.name.trim() === '') {
+      userData.name = deriveNameFromEmail(userData.email);
+    }
     setUser(userData);
   };
 
   const logout = async () => {
-    // Clear any stored auth tokens or data
     setUser(null);
     setIsLoading(false);
   };

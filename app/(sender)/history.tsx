@@ -149,7 +149,7 @@ export default function DeliveryHistory() {
       >
         <View style={styles.headerContent}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-            <ArrowLeft color="#ffffff" size={24} />
+            <ArrowLeft color="#ffffff" size={22} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Delivery History</Text>
           <Text style={styles.headerSubtitle}>Track your past deliveries</Text>
@@ -211,37 +211,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   header: {
-    paddingTop: 70,
-    paddingBottom: 30,
-    paddingHorizontal: 25,
+    paddingTop: 0,
+    paddingBottom: 5,
+    paddingHorizontal: 20,
   },
   headerContent: {
-    alignItems: 'flex-start',
+    flexDirection: "row",
+    alignItems: 'center',
+    marginTop: 0,
   },
   backButton: {
-    marginBottom: 20,
-    padding: 5,
+    marginRight: 10,
+    padding: 6,
+    borderRadius: 20,
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 20,
     fontFamily: 'Inter-Bold',
     color: '#ffffff',
-    marginBottom: 8,
+    marginBottom: 5
   },
   headerSubtitle: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Inter-Regular',
     color: 'rgba(255, 255, 255, 0.8)',
   },
   content: {
     flex: 1,
-    paddingHorizontal: 25,
-    paddingTop: 30,
+    paddingHorizontal: 10,
+    paddingTop: 20,
   },
   searchSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 15,
     gap: 15,
   },
   searchContainer: {
@@ -372,7 +375,7 @@ const styles = StyleSheet.create({
     color: '#666666',
   },
   riderName: {
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: 'Inter-SemiBold',
     color: '#32CD32',
   },
@@ -395,7 +398,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   ratingText: {
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: 'Inter-SemiBold',
     color: '#32CD32',
   },

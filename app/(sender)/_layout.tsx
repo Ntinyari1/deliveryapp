@@ -6,12 +6,13 @@ export default function SenderLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarShowLabel: true, // <-- Ensures labels are shown
         tabBarStyle: {
           backgroundColor: '#ffffff',
           borderTopWidth: 1,
           borderTopColor: '#e0e0e0',
           height: 90,
-          paddingBottom: 30,
+          paddingBottom: 14,
           paddingTop: 10,
           position: 'absolute',
           bottom: 0,
