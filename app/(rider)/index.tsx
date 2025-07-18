@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MapPin, Package, DollarSign, Star, TrendingUp, Play, Clock } from 'lucide-react-native';
 import { useAuth } from '@/context/AuthContext';
+import { useState } from 'react';
 
 const { width } = Dimensions.get('window');
 
@@ -17,7 +18,7 @@ export default function RiderHome() {
     { label: 'This Week', value: '23', icon: TrendingUp, color: '#1E90FF' },
   ];
 
-  const availableDeliveries = [
+  const [availableDeliveries, setAvailableDeliveries] = useState([
     {
       id: '1',
       from: 'Westlands Shopping Mall',
@@ -45,7 +46,15 @@ export default function RiderHome() {
       packageType: 'Electronics',
       estimatedTime: '18 mins',
     },
-  ];
+  ]);
+  const [acceptedDeliveries, setAcceptedDeliveries] = useState([]);
+
+  const handleAcceptDelivery = (delivery) => {
+    Alert.alert('Delivery accepted!', `You have accepted the delivery from ${delivery.from} to ${delivery.to}.`);
+    setAvailableDeliveries((prev) => prev.filter((d) => d.id !== delivery.id));
+    setAcceptedDeliveries((prev) => [...prev, delivery]);
+    router.push({ pathname: '/(rider)/delivery-details', params: { id: delivery.id } });
+  };
 
   return (
     <View style={styles.container}>
@@ -131,7 +140,7 @@ export default function RiderHome() {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.acceptButton}>
+              <TouchableOpacity style={styles.acceptButton} onPress={() => handleAcceptDelivery(delivery)}>
                 <Text style={styles.acceptButtonText}>Accept Delivery</Text>
               </TouchableOpacity>
             </TouchableOpacity>
