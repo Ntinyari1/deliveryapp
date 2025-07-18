@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet, Button, Alert } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useDeliveryContext } from '../../context/DeliveryContext';
+import { useDeliveryContext, Delivery } from '../../context/DeliveryContext';
 
 export default function DeliveryDetails() {
   const { id } = useLocalSearchParams();
   const { deliveries, completeDelivery, cancelDelivery } = useDeliveryContext();
   const router = useRouter();
-  const delivery = deliveries.find((d) => d.id === id);
+  const delivery = deliveries.find((d: Delivery) => d.id === id);
 
   if (!delivery) {
     return (
