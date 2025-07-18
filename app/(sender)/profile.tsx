@@ -189,9 +189,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   header: {
-    paddingTop: 70,
-    paddingBottom: 50,
-    paddingHorizontal: 25,
+    paddingTop: 10,
+    paddingBottom: 30,
+    paddingHorizontal: 19,
   },
   headerTop: {
     flexDirection: 'row',
@@ -200,8 +200,8 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   headerTitle: {
-    fontSize: 24,
-    fontFamily: 'Inter-Bold',
+    fontSize: 28,
+    fontFamily: 'Bold',
     color: '#ffffff',
   },
   menuButton: {
@@ -241,14 +241,14 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 28,
-    fontFamily: 'Inter-Bold',
+    fontFamily: 'Bold',
     color: '#ffffff',
     marginBottom: 8,
     textAlign: 'center',
   },
   userEmail: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
+    fontSize: 18,
+    fontFamily: 'Regular',
     color: 'rgba(255, 255, 255, 0.8)',
     textAlign: 'center',
   },
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 22,
-    fontFamily: 'Inter-Bold',
+    fontFamily: 'inter-Bold',
     color: '#1a1a1a',
     marginBottom: 25,
   },

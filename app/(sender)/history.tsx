@@ -211,9 +211,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   header: {
-    paddingTop: 0,
-    paddingBottom: 5,
-    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingHorizontal: 25,
   },
   headerContent: {
     flexDirection: "row",
@@ -226,14 +226,14 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   headerTitle: {
-    fontSize: 20,
-    fontFamily: 'Inter-Bold',
+    fontSize: 24,
+    fontFamily: 'Bold',
     color: '#ffffff',
     marginBottom: 5
   },
   headerSubtitle: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
+    fontSize: 18,
+    fontFamily: 'Regular',
     color: 'rgba(255, 255, 255, 0.8)',
   },
   content: {
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
   },
   searchPlaceholder: {
     fontSize: 16,
-    fontFamily: 'Inter-Regular',
+    fontFamily: 'Regular',
     color: '#666666',
     marginLeft: 12,
   },
@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
   },
   filterChipText: {
     fontSize: 14,
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: 'SemiBold',
     color: '#32CD32',
   },
   filterChipTextActive: {
@@ -337,8 +337,8 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   locationText: {
-    fontSize: 14,
-    fontFamily: 'Inter-SemiBold',
+    fontSize: 16,
+    fontFamily: 'SemiBold',
     color: '#32CD32',
     flex: 1,
   },
@@ -352,8 +352,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   statusText: {
-    fontSize: 12,
-    fontFamily: 'Inter-Bold',
+    fontSize: 14,
+    fontFamily: 'Bold',
   },
   deliveryDetails: {
     marginBottom: 15,
@@ -365,18 +365,18 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   detailText: {
-    fontSize: 14,
-    fontFamily: 'Inter-Regular',
+    fontSize: 16,
+    fontFamily: 'Regular',
     color: '#666666',
   },
   riderLabel: {
-    fontSize: 14,
-    fontFamily: 'Inter-Medium',
+    fontSize: 16,
+    fontFamily: 'Medium',
     color: '#666666',
   },
   riderName: {
-    fontSize: 15,
-    fontFamily: 'Inter-SemiBold',
+    fontSize: 17,
+    fontFamily: 'SemiBold',
     color: '#32CD32',
   },
   deliveryFooter: {
