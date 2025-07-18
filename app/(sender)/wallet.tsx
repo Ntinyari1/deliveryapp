@@ -34,7 +34,9 @@ export default function WalletPage() {
         </View>
       </LinearGradient>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}
+         contentContainerStyle={{ paddingBottom: 80 }}
+        >
         {/* Balance Card */}
         <View style={styles.balanceCard}>
           <View style={styles.balanceHeader}>
@@ -162,7 +164,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   balanceAmount: {
-    fontSize: 36,
+    fontSize: 25,
     fontFamily: 'Inter-Bold',
     color: '#228B22',
     marginBottom: 20,

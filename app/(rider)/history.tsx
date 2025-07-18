@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   header: {
-    paddingTop: 70,
+    paddingTop: 20,
     paddingBottom: 30,
     paddingHorizontal: 25,
   },
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   filterButton: {
     backgroundColor: '#ffffff',
     borderRadius: 15,
-    padding: 15,
+    padding: 10,
     elevation: 3,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
   filterChip: {
     backgroundColor: '#ffffff',
     borderRadius: 25,
-    paddingHorizontal: 20,
+    paddingHorizontal: 13,
     paddingVertical: 12,
     elevation: 2,
     shadowColor: '#000',

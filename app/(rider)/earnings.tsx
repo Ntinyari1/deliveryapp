@@ -27,7 +27,7 @@ export default function RiderEarnings() {
       >
         <View style={styles.headerContent}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-            <ArrowLeft color="#ffffff" size={24} />
+            <ArrowLeft color="#ffffff" size={28} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>💰 Earnings & Payouts</Text>
           <Text style={styles.headerSubtitle}>Track your earnings and payments</Text>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   header: {
-    paddingTop: 70,
+    paddingTop: 0,
     paddingBottom: 30,
     paddingHorizontal: 25,
   },

@@ -54,7 +54,7 @@ export default function RiderHome() {
         style={styles.header}
       >
         <View style={styles.headerContent}>
-          <Text style={styles.greeting}>Good morning,</Text>
+          <Text style={styles.greeting}>Hello,</Text>
           <Text style={styles.userName}>{user?.name || 'Rider'}</Text>
           <Text style={styles.subtitle}>Ready to earn today?</Text>
         </View>
@@ -148,27 +148,27 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
   },
   header: {
-    paddingTop: 70,
-    paddingBottom: 40,
+    paddingTop: 20,
+    paddingBottom: 20,
     paddingHorizontal: 25,
   },
   headerContent: {
     alignItems: 'flex-start',
   },
   greeting: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
+    fontSize: 20,
+    fontFamily: 'regular',
     color: 'rgba(255, 255, 255, 0.9)',
   },
   userName: {
-    fontSize: 28,
+    fontSize: 25,
     fontFamily: 'Inter-Bold',
     color: '#ffffff',
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
+    fontSize: 18,
+    fontFamily: 'Regular',
     color: 'rgba(255, 255, 255, 0.8)',
   },
   scrollContent: {

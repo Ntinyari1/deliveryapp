@@ -11,7 +11,7 @@ export default function RiderLayout() {
           borderTopWidth: 1,
           borderTopColor: '#e0e0e0',
           height: 90,
-          paddingBottom: 30,
+          paddingBottom: 10,
           paddingTop: 10,
           position: 'absolute',
           bottom: 0,
