@@ -24,7 +24,7 @@ export default function RiderProfile() {
       subtitle: 'View your earnings and payment history', 
       icon: DollarSign, 
       color: '#32CD32',
-      route: 'earnings'
+      route: 'profile/earnings'
     },
     { 
       id: 'settings', 
@@ -32,7 +32,7 @@ export default function RiderProfile() {
       subtitle: 'Notifications & preferences', 
       icon: Settings, 
       color: '#1E90FF',
-      route: 'settings'
+      route: 'profile/settings'
     },
     { 
       id: 'help', 
@@ -40,7 +40,7 @@ export default function RiderProfile() {
       subtitle: 'Get help and contact support', 
       icon: HelpCircle, 
       color: '#FFD700',
-      route: 'help'
+      route: 'profile/help'
     },
     { 
       id: 'privacy', 
@@ -48,13 +48,13 @@ export default function RiderProfile() {
       subtitle: 'Manage your privacy settings', 
       icon: Shield, 
       color: '#9370DB',
-      route: 'privacy'
+      route: 'profile/privacy'
     },
   ];
 
   const handleMenuPress = (item: any) => {
     setMenuVisible(false);
-    router.push(`/(rider)/${item.route}`);
+    router.push({ pathname: `/(rider)/${item.route}` } as any);
   };
 
   const handleLogout = () => {
@@ -76,7 +76,7 @@ export default function RiderProfile() {
   };
 
   const handleEditProfile = () => {
-    router.push('/(rider)/edit-profile');
+    router.push('/(rider)/profile/edit-profile' as any);
   };
 
   return (
