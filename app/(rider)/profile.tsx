@@ -156,12 +156,11 @@ export default function RiderProfile() {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Rider Settings</Text>
+              <Text style={styles.modalTitle}>Settings Menu</Text>
               <TouchableOpacity onPress={() => setMenuVisible(false)}>
                 <X color="#228B22" size={24} />
               </TouchableOpacity>
             </View>
-            
             {menuItems.map((item) => (
               <TouchableOpacity 
                 key={item.id} 
@@ -169,7 +168,7 @@ export default function RiderProfile() {
                 onPress={() => handleMenuPress(item)}
                 activeOpacity={0.7}
               >
-                <View style={[styles.modalMenuIcon, { backgroundColor: item.color + '15' }]}>
+                <View style={[styles.modalMenuIcon, { backgroundColor: item.color + '15' }]}> 
                   <item.icon color={item.color} size={24} />
                 </View>
                 <View style={styles.modalMenuContent}>
