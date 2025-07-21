@@ -4,12 +4,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MapPin, Package, DollarSign, Star, TrendingUp, Play, Clock } from 'lucide-react-native';
 import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
+import { useDeliveryContext } from '../../context/DeliveryContext';
+import { Delivery } from '../../context/DeliveryContext';
 
 const { width } = Dimensions.get('window');
 
 export default function RiderHome() {
   const router = useRouter();
   const { user } = useAuth();
+  const { deliveries, acceptDelivery } = useDeliveryContext();
+
+  const availableDeliveries = deliveries.filter((d) => d.status === 'available');
 
   const stats = [
     { label: 'Total Deliveries', value: '156', icon: Package, color: '#32CD32' },
@@ -18,42 +23,9 @@ export default function RiderHome() {
     { label: 'This Week', value: '23', icon: TrendingUp, color: '#1E90FF' },
   ];
 
-  const [availableDeliveries, setAvailableDeliveries] = useState([
-    {
-      id: '1',
-      from: 'Westlands Shopping Mall',
-      to: 'Karen Shopping Centre',
-      distance: '12 km',
-      payment: 'KSh 350',
-      packageType: 'Document',
-      estimatedTime: '25 mins',
-    },
-    {
-      id: '2',
-      from: 'CBD - Kencom',
-      to: 'Kilimani',
-      distance: '5.2 km',
-      payment: 'KSh 280',
-      packageType: 'Small Package',
-      estimatedTime: '15 mins',
-    },
-    {
-      id: '3',
-      from: 'Parklands',
-      to: 'Lavington',
-      distance: '8.5 km',
-      payment: 'KSh 420',
-      packageType: 'Electronics',
-      estimatedTime: '18 mins',
-    },
-  ]);
-  const [acceptedDeliveries, setAcceptedDeliveries] = useState([]);
-
-  const handleAcceptDelivery = (delivery) => {
+  const handleAcceptDelivery = (delivery: Delivery) => {
     Alert.alert('Delivery accepted!', `You have accepted the delivery from ${delivery.from} to ${delivery.to}.`);
-    setAvailableDeliveries((prev) => prev.filter((d) => d.id !== delivery.id));
-    setAcceptedDeliveries((prev) => [...prev, delivery]);
-    router.push({ pathname: '/(rider)/delivery-details', params: { id: delivery.id } });
+    acceptDelivery(delivery.id);
   };
 
   return (
