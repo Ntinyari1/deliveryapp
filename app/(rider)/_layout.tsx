@@ -91,6 +91,12 @@ export default function RiderLayout() {
             ),
           }}
         />
+        {/* Hide extra pages from the tab bar */}
+        <Tabs.Screen name="earnings" options={{ href: null }} />
+        <Tabs.Screen name="settings" options={{ href: null }} />
+        <Tabs.Screen name="edit-profile" options={{ href: null }} />
+        <Tabs.Screen name="help" options={{ href: null }} />
+        <Tabs.Screen name="privacy" options={{ href: null }} />
       </Tabs>
     </DeliveryProvider>
   );
